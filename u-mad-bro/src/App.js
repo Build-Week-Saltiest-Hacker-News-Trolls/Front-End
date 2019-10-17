@@ -1,7 +1,8 @@
 import React from "react";
 import logo from "./logo.svg";
 import "./App.css";
-//first commit
+
+import PrivateRoute from "./components/PrivateRoute.js";
 
 function App() {
   return (
