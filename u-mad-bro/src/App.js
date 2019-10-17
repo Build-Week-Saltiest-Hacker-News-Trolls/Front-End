@@ -1,16 +1,19 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
+import SignIn from './SignInLayout/SignIn';
+import SignUp from './SignInLayout/SignUp';
 import PrivateRoute from "./components/PrivateRoute.js";
-import SignUp from "./SignInLayout/SignUp";
+
 
 //first commit
 
 function App() {
   return (
-    <div>
-      <Route exact path="/" component={SignUp} />
-    </div>
+    <main>
+      <Route exact path="/" component={SignIn} />
+      <Route exact path="/signup" component={SignUp} />
+    </main>
   );
 }
 
