@@ -1,16 +1,15 @@
 import React from "react";
-import { Route } from 'react-router-dom';
-import logo from "./logo.svg";
+import { Route } from "react-router-dom";
 import "./App.css";
-import SignUp from './SignInLayout/SignUp';
+import SignUp from "./SignInLayout/SignUp";
 
 //first commit
 
 function App() {
   return (
-    <main>
+    <div>
       <Route exact path="/" component={SignUp} />
-    </main>
+    </div>
   );
 }
 
