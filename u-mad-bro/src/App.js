@@ -1,9 +1,10 @@
 import React from "react";
-import { Route } from 'react-router-dom';
-import logo from "./logo.svg";
+import { Route } from "react-router-dom";
 import "./App.css";
 import SignIn from './SignInLayout/SignIn';
 import SignUp from './SignInLayout/SignUp';
+import PrivateRoute from "./components/PrivateRoute.js";
+
 
 //first commit
 
