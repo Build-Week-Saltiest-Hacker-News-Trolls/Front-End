@@ -1,6 +1,7 @@
 import React from "react";
 import { Route } from "react-router-dom";
 import "./App.css";
+import PrivateRoute from "./components/PrivateRoute.js";
 import SignUp from "./SignInLayout/SignUp";
 
 //first commit
