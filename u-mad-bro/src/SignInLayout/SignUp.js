@@ -14,7 +14,7 @@ export default function SignUp() {
 
     return (
         <form onSubmit={handleSubmit}>
-            <label htmlFor="username">Username</label>
+            <label htmlFor="username">Username: </label>
             <input
                 id="username"
                 value={credentials.username}
@@ -22,7 +22,7 @@ export default function SignUp() {
                 type="text"
                 onChange={handleChange}
             />
-            <label htmlFor="password">Password</label>
+            <label htmlFor="password">Password: </label>
             <input
                 id="password"
                 value={credentials.password}
@@ -30,6 +30,7 @@ export default function SignUp() {
                 type="password"
                 onChange={handleChange}
             />
+            <button type="submit">Sign Up</button>
         </form>
     );
 }
