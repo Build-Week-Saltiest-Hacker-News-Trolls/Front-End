@@ -4,6 +4,7 @@ import "./App.css";
 import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
 import PrivateRoute from "./components/PrivateRoute.js";
+import Dashboard from "./Layout/Dashboard.js";
 import { CommentContext } from "./Context/CommentContext.js";
 import { FavCommentContext } from "./Context/FavCommentContext.js";
 
@@ -33,6 +34,7 @@ function App() {
         >
           <Route exact path="/" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
+          <PrivateRoute path="/dashboard" component={Dashboard} />
         </FavCommentContext.Provider>
       </CommentContext.Provider>
     </main>
