@@ -5,6 +5,7 @@ export default function SearchBar(props) {
   const [ searchTerm, setSearchTerm ] = useState("");
   const [ searchResults, setSearchResults ] = useState("");
 
+  // test this API URL
   const API_URL = 'https://hacker-news.firebaseio.com/v0/user/'
 
   const handleChange = e => {
