@@ -1,0 +1,23 @@
+@import "../theme/index.scss";
+@import url("https://fonts.googleapis.com/css?family=Zilla+Slab&display=swap");
+
+.logo {
+  font-family: "Zilla Slab", "Trebuchet MS", Helvetica, sans-serif;
+  font-weight: bold;
+  letter-spacing: -1px;
+  color: black;
+  font-size: 35px;
+
+  .logo-center {
+    color: #ff6700;
+  }
+
+  .tagline {
+    //Import Roboto from Google Fonts
+    font-family: "Helvetica", sans-serif;
+    font-size: 13px;
+    font-weight: normal;
+    letter-spacing: 0px;
+    margin-top: -5px;
+  }
+}

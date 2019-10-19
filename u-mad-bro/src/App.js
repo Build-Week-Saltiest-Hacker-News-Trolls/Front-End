@@ -5,6 +5,7 @@ import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
 import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
+import Landing from "./Layout/Landing.js";
 import Dashboard from "./Layout/Dashboard.js";
 import { CommentContext } from "./Context/CommentContext.js";
 import { FavCommentContext } from "./Context/FavCommentContext.js";
@@ -33,9 +34,13 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
+
+          <Landing />
+
           <Route exact path="/" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/search" component={SearchBar} />
+
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </FavCommentContext.Provider>
       </CommentContext.Provider>
