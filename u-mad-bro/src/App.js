@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
+import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
 import Dashboard from "./Layout/Dashboard.js";
 import { CommentContext } from "./Context/CommentContext.js";
@@ -34,6 +35,7 @@ function App() {
         >
           <Route exact path="/" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/search" component={SearchBar} />
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </FavCommentContext.Provider>
       </CommentContext.Provider>
