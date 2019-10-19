@@ -3,7 +3,7 @@ import { Route } from "react-router-dom";
 import "./App.css";
 import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
-import SearchBar from "./components/SeachBar.js";
+import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
 import Dashboard from "./Layout/Dashboard.js";
 import { CommentContext } from "./Context/CommentContext.js";
