@@ -34,7 +34,6 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
-
           <Landing />
 
           <Route exact path="/" component={SignIn} />

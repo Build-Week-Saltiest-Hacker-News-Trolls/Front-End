@@ -1,6 +1,14 @@
 import React, { useState } from "react";
-import { SignForm } from '../theme/Styled';
-import Logo from '../components/Logo';
+import Logo from "../components/Logo";
+import {
+  UMBButton,
+  SignInput1,
+  SignInput2,
+  InputLine,
+  InputContainer,
+  SignForm,
+  SignFormContainer
+} from "../theme/Styled.js";
 
 export default function SignIn() {
   const [credentials, setCredentials] = useState({
@@ -18,27 +26,33 @@ export default function SignIn() {
   };
 
   return (
-    <SignForm>
+    <SignFormContainer>
       <Logo />
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input
-          id="username"
-          value={credentials.username}
-          name="username"
-          type="text"
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          value={credentials.password}
-          name="password"
-          type="password"
-          onChange={handleChange}
-        />
-        <button type="submit">Sign In</button>
-      </form>
-    </SignForm>
+      <SignForm>
+        <InputContainer>
+          <SignInput1
+            id="username"
+            value={credentials.username}
+            name="username"
+            type="text"
+            onChange={handleChange}
+            placeholder="Username"
+          />
+          <InputLine />
+        </InputContainer>
+        <InputContainer>
+          <SignInput2
+            id="password"
+            value={credentials.password}
+            name="password"
+            type="password"
+            onChange={handleChange}
+            placeholder="Password"
+          />
+          <InputLine />
+        </InputContainer>
+        <UMBButton onClick={handleSubmit}>Sign In</UMBButton>
+      </SignForm>
+    </SignFormContainer>
   );
 }
