@@ -14,3 +14,15 @@ export const UMBButton = styled.button`
     box-shadow: 3px 3px 10px lightgray;
   }
 `;
+
+export const SignForm = styled.div`
+  margin: auto;
+  width: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  button {
+    margin-top: 20px;
+    width: 100%;
+  }
+`
