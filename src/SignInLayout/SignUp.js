@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { SignForm } from '../theme/Styled';
+import Logo from '../components/Logo';
 
 export default function SignUp() {
   const [credentials, setCredentials] = useState({
@@ -16,8 +18,8 @@ export default function SignUp() {
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
+    <SignForm>
+      <Logo />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
         <input
@@ -35,8 +37,9 @@ export default function SignUp() {
           type="password"
           onChange={handleChange}
         />
+        <br/>
         <button type="submit">Sign Up</button>
       </form>
-    </>
+    </SignForm>
   );
 }

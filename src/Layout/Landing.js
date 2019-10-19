@@ -45,7 +45,7 @@ const Landing = () => {
         closable={true}
         visible={landingState.drawer}
         onClose={closeDrawer}
-        height="90%"
+        height="60%"
       >
         {landingState.view === "signIn" ? <SignIn /> : <SignUp />}
       </Drawer>

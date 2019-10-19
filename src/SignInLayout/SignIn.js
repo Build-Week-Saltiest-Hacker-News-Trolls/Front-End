@@ -1,5 +1,6 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { SignForm } from '../theme/Styled';
+import Logo from '../components/Logo';
 
 export default function SignIn() {
   const [credentials, setCredentials] = useState({
@@ -16,10 +17,9 @@ export default function SignIn() {
     setCredentials({ username: "", password: "" });
   };
 
-  // <br/> tags are temporary until styling is added
   return (
-    <>
-      <h1>Sign In</h1>
+    <SignForm>
+      <Logo />
       <form onSubmit={handleSubmit}>
         <label htmlFor="username">Username: </label>
         <input
@@ -29,7 +29,6 @@ export default function SignIn() {
           type="text"
           onChange={handleChange}
         />
-        <br />
         <label htmlFor="password">Password: </label>
         <input
           id="password"
@@ -38,11 +37,8 @@ export default function SignIn() {
           type="password"
           onChange={handleChange}
         />
-        <br />
         <button type="submit">Sign In</button>
-        <br />
-        {/* <Link to={`/signup`}>Sign Up</Link> */}
       </form>
-    </>
+    </SignForm>
   );
 }
