@@ -1,0 +1,11 @@
+@import "../theme/index.scss";
+
+#Landing {
+  @include flex(column, center, center);
+  height: 100vh;
+
+  .button-group {
+    @include flex(column, space-around, space-between);
+    height: 120px;
+  }
+}
