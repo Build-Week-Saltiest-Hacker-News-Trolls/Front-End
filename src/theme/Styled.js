@@ -15,14 +15,39 @@ export const UMBButton = styled.button`
   }
 `;
 
-export const SignForm = styled.div`
+export const SignFormContainer = styled.div`
   margin: auto;
-  width: 125px;
+  min-width: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
   button {
-    margin-top: 20px;
-    width: 100%;
+    margin-left: 60%;
+    width: 40%;
   }
-`
+`;
+
+export const SignForm = styled.div`
+  width: 100%;
+`;
+
+export const InputContainer = styled.div`
+width; 100%;
+`;
+
+export const SignInput1 = styled.input`
+  background: transparent;
+  border: none;
+  margin-top: 0.75rem;
+`;
+
+export const SignInput2 = styled.input`
+  background: transparent;
+  border: none;
+`;
+
+export const InputLine = styled.div`
+  border-bottom: 1px solid orange;
+  width: 100%;
+  margin-bottom: 0.75rem;
+`;
