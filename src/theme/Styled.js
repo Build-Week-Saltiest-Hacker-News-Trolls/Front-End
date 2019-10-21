@@ -51,3 +51,11 @@ export const InputLine = styled.div`
   width: 100%;
   margin-bottom: 0.75rem;
 `;
+
+export const FeedCard = styled.div`
+  border-radius: 10px;
+  background: whitesmoke;
+  box-shadow: 1px 1px 3px silver;
+  width: 400px;
+  height: 250px;
+`;

@@ -34,13 +34,10 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
-          <Landing />
-
-          <Route exact path="/" component={SignIn} />
-          <Route exact path="/signup" component={SignUp} />
+          <Route exact path="/" component={Landing} />
           <Route exact path="/search" component={SearchBar} />
-
-          <PrivateRoute path="/dashboard" component={Dashboard} />
+          {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
+          <Route exact path="/dashboard" component={Dashboard} />
         </FavCommentContext.Provider>
       </CommentContext.Provider>
     </main>
