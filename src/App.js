@@ -39,7 +39,6 @@ function App() {
           <Route exact path="/" component={SignIn} />
           <Route exact path="/signup" component={SignUp} />
           <Route exact path="/search" component={SearchBar} />
-
           <PrivateRoute path="/dashboard" component={Dashboard} />
         </FavCommentContext.Provider>
       </CommentContext.Provider>
