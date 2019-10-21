@@ -1,6 +1,8 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import { UMBButton } from "../theme/Styled.js";
+
+import "../scss/Menu.scss";
 
 import { Drawer } from "antd";
 
@@ -15,17 +17,17 @@ const Menu = props => {
     <>
       <Drawer
         placement="right"
-        closable={true}
+        closable={false}
         visible={props.menuState.drawer}
         onClose={closeDrawer}
-        height="60%"
+        width="40%"
       >
-        <NavLink to="/">Marketing Page</NavLink>
-        <NavLink to="/about">About the Team</NavLink>
-        <NavLink to="/contact">Contact</NavLink>
-        <UMBButton style={{ position: "absolute", bottom: 10, right: 10 }}>
-          Sign Out
-        </UMBButton>
+        <div className="menu">
+          <NavLink to="/">Marketing Page</NavLink>
+          <NavLink to="/about">About the Team</NavLink>
+          <NavLink to="/contact">Contact</NavLink>
+        </div>
+        <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
       </Drawer>
     </>
   );

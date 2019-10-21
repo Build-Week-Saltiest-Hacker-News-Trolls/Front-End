@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Logo from "../components/Logo.js";
 import Menu from "../components/Menu.js";
+import { Link } from "react-router-dom";
 
 import "../scss/NavBar.scss";
 
@@ -16,13 +17,16 @@ const NavBar = () => {
   };
 
   return (
-    <nav id="Navbar">
-      <Logo />
-      <Icon type="menu" onClick={openDrawer} />
-
-      {/* Drawer Menu */}
-      <Menu setMenuState={setMenuState} menuState={menuState} />
-    </nav>
+    <div className="navbarContainer">
+      <div id="Navbar">
+        <Link to="/dashboard">
+          <Logo />
+        </Link>
+        <Icon type="menu" onClick={openDrawer} />
+        {/* Drawer Menu */}
+        <Menu setMenuState={setMenuState} menuState={menuState} />
+      </div>
+    </div>
   );
 };
 
