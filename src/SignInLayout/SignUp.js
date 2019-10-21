@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import Logo from "../components/Logo";
+import { Link } from "react-router-dom";
+
 import {
   UMBButton,
   SignInput1,
@@ -49,7 +51,13 @@ export default function SignUp() {
             placeholder="Password"
           />
         </InputContainer>
-        <UMBButton onClick={handleSubmit}>Sign Up</UMBButton>
+        <Link to="/dashboard">
+          <UMBButton
+          // onClick={handleSubmit}
+          >
+            Sign Up
+          </UMBButton>
+        </Link>
       </SignForm>
     </SignFormContainer>
   );
