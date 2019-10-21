@@ -8,11 +8,13 @@ const Feed = () => {
       {/* Map over incoming comments */}
       <FeedCard>
         <Row>
-          <Col>
+          <Col span={6} style={{ background: "lightblue" }}>
             <p>Username</p>
             <p>01/01/2020</p>
+            <h3>10/10</h3>
+            <p>Rating</p>
           </Col>
-          <Col>
+          <Col span={18} style={{ background: "lightblue" }}>
             <p>Comment</p>
             <p>
               Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore
