@@ -1,0 +1,12 @@
+@import "../theme/index.scss";
+
+.menu {
+  @include flex(column, center, flex-start);
+  margin-top: 70px;
+
+  a {
+    color: $dark;
+    font-weight: bolder;
+    font-size: 20px;
+  }
+}

@@ -38,7 +38,6 @@ export default function SignUp() {
             onChange={handleChange}
             placeholder="Username"
           />
-          <InputLine />
         </InputContainer>
         <InputContainer>
           <SignInput2
@@ -49,7 +48,6 @@ export default function SignUp() {
             onChange={handleChange}
             placeholder="Password"
           />
-          <InputLine />
         </InputContainer>
         <UMBButton onClick={handleSubmit}>Sign Up</UMBButton>
       </SignForm>
