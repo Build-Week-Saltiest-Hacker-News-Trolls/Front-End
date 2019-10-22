@@ -20,7 +20,7 @@ const Menu = props => {
         closable={false}
         visible={props.menuState.drawer}
         onClose={closeDrawer}
-        width="40%"
+        width="50%"
       >
         <div className="menu">
           <NavLink to="/">Marketing Page</NavLink>
