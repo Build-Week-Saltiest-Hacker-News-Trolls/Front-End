@@ -36,7 +36,7 @@ export default function EditUser() {
   return (
     <SignFormContainer>
       <Logo />
-      <EditHeader>Edit User Infomation</EditHeader>      
+      <EditHeader>Edit Profile Details</EditHeader>      
       <SignForm>
         <InputContainer>
           <SignInput1
