@@ -8,7 +8,7 @@ export const UMBButton = styled.button`
   padding: 6px 15px;
   box-shadow: 1px 1px 1px whitesmoke;
   transition: 400ms;
-
+  
   &:hover {
     filter: hue-rotate(-30deg) brightness(110%);
     box-shadow: 3px 3px 10px lightgray;
@@ -50,6 +50,11 @@ export const InputLine = styled.div`
   border-bottom: 1px solid orange;
   width: 100%;
   margin-bottom: 0.75rem;
+`;
+
+export const EditHeader = styled.h4`
+  color: rgba(255, 114, 0, 1);
+  margin-top: 2.5rem;
 `;
 
 export const FeedCard = styled.div`

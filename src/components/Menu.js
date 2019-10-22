@@ -26,6 +26,7 @@ const Menu = props => {
           <NavLink to="/">Marketing Page</NavLink>
           <NavLink to="/about">About the Team</NavLink>
           <NavLink to="/contact">Contact</NavLink>
+          <NavLink to="/edit"><span>Edit User Info</span></NavLink>
         </div>
         <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
       </Drawer>
