@@ -1,7 +1,7 @@
 export const fakeCommentData = [
   {
     id: 0,
-    username: "Username",
+    username: "Martin",
     commentDate: "01/15/2020",
     positive: 0.5,
     negative: -0.113,
@@ -11,7 +11,7 @@ export const fakeCommentData = [
   },
   {
     id: 1,
-    username: "Username1",
+    username: "Karthik",
     commentDate: "06/01/2020",
     positive: -0.74,
     negative: 0.46,
@@ -21,7 +21,7 @@ export const fakeCommentData = [
   },
   {
     id: 2,
-    username: "Username2",
+    username: "Denton",
     commentDate: "10/01/2020",
     positive: 0.5,
     negative: 0.09,
@@ -31,7 +31,7 @@ export const fakeCommentData = [
   },
   {
     id: 3,
-    username: "Username3",
+    username: "Donald",
     commentDate: "01/04/2020",
     positive: 0.5,
     negative: -0.113,
@@ -41,7 +41,7 @@ export const fakeCommentData = [
   },
   {
     id: 4,
-    username: "Username4",
+    username: "Chris",
     commentDate: "01/03/2020",
     positive: -0.84,
     negative: 0.86,
@@ -51,7 +51,7 @@ export const fakeCommentData = [
   },
   {
     id: 5,
-    username: "Username5",
+    username: "Vinni",
     commentDate: "01/09/2020",
     positive: -0.66,
     negative: 0.16,
@@ -61,7 +61,7 @@ export const fakeCommentData = [
   },
   {
     id: 6,
-    username: "Username6",
+    username: "Steve",
     commentDate: "05/01/2020",
     positive: 0.3,
     negative: 0.88,
