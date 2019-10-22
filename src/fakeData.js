@@ -1,4 +1,4 @@
-export const fakeData = [
+export const fakeCommentData = [
   {
     id: 0,
     username: "Username",
@@ -70,3 +70,32 @@ export const fakeData = [
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
   }
 ];
+
+export const fakeUserData = {
+  id: 21,
+  username: "test subject",
+  password: "1234",
+  email: "test@testing.com",
+  favComments: [
+    {
+      id: 3,
+      username: "Username3",
+      commentDate: "01/04/2020",
+      positive: 0.5,
+      negative: -0.113,
+      neutral: 0,
+      comment:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
+    },
+    {
+      id: 6,
+      username: "Username6",
+      commentDate: "05/01/2020",
+      positive: 0.3,
+      negative: 0.88,
+      neutral: 0.58,
+      comment:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
+    }
+  ]
+};
