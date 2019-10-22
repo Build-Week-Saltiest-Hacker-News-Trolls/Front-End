@@ -48,11 +48,12 @@ export default function SearchBar(props) {
         </form>         
       </section> 
       {/* display search results or no results message */}
-      {searchResults !== "" ? 
+      {/* {searchResults !== "" ? 
         <div className="search-results">{searchResults}</div> 
       :
         <div className="search-results">"User not found"</div>
-      }
+      } */}
+      <div className="search-results">{searchResults}</div>
     </>
   )
 }
