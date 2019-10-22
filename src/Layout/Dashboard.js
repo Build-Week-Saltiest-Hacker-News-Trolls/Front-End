@@ -1,12 +1,14 @@
 import React, { useContext } from "react";
-
-import { CommentContext } from "../Context/CommentContext.js";
-import { FavCommentContext } from "../Context/FavCommentContext.js";
+import Feed from "../components/Feed.js";
+import NavBar from "./NavBar.js";
 
 const Dashboard = props => {
-  const { comments, addToFavComments } = useContext(CommentContext);
-  const { favComments, removeFromFavComments } = useContext(FavCommentContext);
-  return <div>testing123....is this thing on?</div>;
+  return (
+    <>
+      <NavBar />
+      <Feed />
+    </>
+  );
 };
 
 export default Dashboard;

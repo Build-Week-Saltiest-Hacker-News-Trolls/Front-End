@@ -1,5 +1,15 @@
 import React, { useState } from "react";
+import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+
+import {
+  UMBButton,
+  SignInput1,
+  SignInput2,
+  InputContainer,
+  SignForm,
+  SignFormContainer
+} from "../theme/Styled.js";
 
 export default function SignIn() {
   const [credentials, setCredentials] = useState({
@@ -16,33 +26,38 @@ export default function SignIn() {
     setCredentials({ username: "", password: "" });
   };
 
-  // <br/> tags are temporary until styling is added
   return (
-    <>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input
-          id="username"
-          value={credentials.username}
-          name="username"
-          type="text"
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          value={credentials.password}
-          name="password"
-          type="password"
-          onChange={handleChange}
-        />
-        <br />
-        <button type="submit">Sign In</button>
-        <br />
-        {/* <Link to={`/signup`}>Sign Up</Link> */}
-      </form>
-    </>
+    <SignFormContainer>
+      <Logo />
+      <SignForm>
+        <InputContainer>
+          <SignInput1
+            id="username"
+            value={credentials.username}
+            name="username"
+            type="text"
+            onChange={handleChange}
+            placeholder="Username"
+          />
+        </InputContainer>
+        <InputContainer>
+          <SignInput2
+            id="password"
+            value={credentials.password}
+            name="password"
+            type="password"
+            onChange={handleChange}
+            placeholder="Password"
+          />
+        </InputContainer>
+        <Link to="/dashboard">
+          <UMBButton
+          // onClick={handleSubmit}
+          >
+            Sign In
+          </UMBButton>
+        </Link>
+      </SignForm>
+    </SignFormContainer>
   );
 }
