@@ -13,8 +13,8 @@ const Dashboard = props => {
     <>
       <NavBar />
       <Graph comments={comments} />
-      <SearchBar />
-      <Feed />
+      <SearchBar comments={comments} />
+      {/* <Feed /> */}
     </>
   );
 };

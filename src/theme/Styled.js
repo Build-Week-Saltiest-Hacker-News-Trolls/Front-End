@@ -59,3 +59,14 @@ export const FeedCard = styled.div`
   width: 400px;
   height: 250px;
 `;
+
+export const SearchForm = styled.form`
+  border-bottom: none;
+  border: 3px solid silver;  
+  border-radius: 10px;  
+  width: 50%;
+  height: 50px;
+  margin: 15px auto;
+  padding-bottom: 18px;
+  color: black;
+`;

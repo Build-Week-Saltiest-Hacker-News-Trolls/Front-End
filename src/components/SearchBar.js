@@ -1,59 +1,50 @@
-import React, { useState } from 'react';
-import axios from 'axios';
+import React, { useState, useEffect } from 'react';
+import FeedCardComponent from "./FeedCardComponent.js";
+import { SearchForm } from "../theme/Styled.js";
 
-export default function SearchBar(props) {
+export default function SearchBar({ comments }) {
   const [ searchTerm, setSearchTerm ] = useState("");
-  const [ searchResults, setSearchResults ] = useState("");
-
-  // test this API URL
-  const API_URL = 'https://hacker-news.firebaseio.com/v0/user/'
+  const [ searchResults, setSearchResults ] = useState([]);
 
   const handleChange = e => {
     setSearchTerm(e.target.value)
   }
+  
+  // <============= search filter function - runs each time seach value changes ======================>
+  useEffect(() => {
+    const results = comments.filter(comment => comment.username.toLowerCase().includes(searchTerm));
+    setSearchResults(results);
+    console.log("Search Results", searchResults)
+  }, [searchTerm])
 
-  const getUserInfo = () => {
-    axios
-      .get(`${API_URL}${searchTerm}`)
-      .then(response => {
-        console.log("Search Response", response);
-        setSearchResults(response);
-      })
-      .then(error => {
-        console.log("Search Error Message", error)
-      })
-  }
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    getUserInfo();
-    setSearchTerm("");
+  // <============= Render search results or full comment list ============>
+  const conditionalRender = () => {
+    return searchTerm === "" ? comments : searchResults;
   }
 
  
   return (
-    // form needs styling
+    // form needs updated styling
     <>
       <section className="search-form">    
-        <form onSubmit={handleSubmit}>
-          <input 
+        <SearchForm>
+          <input size="large" 
             id="search"
             value={searchTerm}
             name="search"
             type="text"
-            placeholder="Search by username"
+            placeholder="  Search by username"
             onChange={handleChange}
-          />
-          <button type="submit">Search</button>
-        </form>         
+          />          
+        </SearchForm>         
       </section> 
-      {/* display search results or no results message */}
-      {/* {searchResults !== "" ? 
-        <div className="search-results">{searchResults}</div> 
-      :
-        <div className="search-results">"User not found"</div>
-      } */}
-      <div className="search-results">{searchResults}</div>
+      <>
+      {/* Map over incoming or filtered comments */}
+
+      {conditionalRender().map(item => (
+        <FeedCardComponent key={item.id} comment={item} />
+      ))}
+      </>
     </>
   )
 }
