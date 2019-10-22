@@ -14,7 +14,7 @@ const Feed = () => {
       {/* Map over incoming comments */}
 
       {comments.map(item => (
-        <FeedCardComponent key={item.id} user={item} />
+        <FeedCardComponent key={item.id} comment={item} />
       ))}
     </>
   );
