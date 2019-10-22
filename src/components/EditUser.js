@@ -23,6 +23,7 @@ export default function EditUser() {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
   };
 
+  // TODO: Add Save Button Functionality 
   const handleSave = e => {
     e.preventDefault();
     setCredentials({ username: "", password: "", email: ""});
@@ -30,7 +31,6 @@ export default function EditUser() {
 
   const handleCancel = e => {
     e.preventDefault();
-    setCredentials({ username: "", password: "", email: ""});
   };
 
   return (
