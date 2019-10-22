@@ -3,7 +3,14 @@ import { FeedCard } from "../theme/Styled.js";
 import { Row, Col } from "antd";
 
 const FeedCardComponent = props => {
-  const { id, username, commentDate, rating, ratingType, comment } = props.user;
+  const {
+    id,
+    username,
+    commentDate,
+    rating,
+    ratingType,
+    comment
+  } = props.comment;
 
   console.log(username);
   console.log("props from feedcard.js", props);
