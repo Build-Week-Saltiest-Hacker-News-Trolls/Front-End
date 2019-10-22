@@ -1,29 +1,28 @@
-import React from "react";
-import { FeedCard } from "../theme/Styled.js";
-import { Row, Col } from "antd";
+import React, { useEffect, useState } from "react";
+import FeedCardComponent from "./FeedCardComponent.js";
 
 const Feed = () => {
+  const [fakeData, setFakeData] = useState([
+    {
+      id: 0,
+      username: "Username",
+      commentDate: "01/01/2020",
+      rating: "10/10",
+      ratingType: "Rating",
+      comment:
+        "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
+    }
+  ]);
+
+  console.log("fakeData from feed.js", fakeData);
+
   return (
     <>
       {/* Map over incoming comments */}
-      <FeedCard>
-        <Row>
-          <Col span={6} style={{ background: "lightblue" }}>
-            <p>Username</p>
-            <p>01/01/2020</p>
-            <h3>10/10</h3>
-            <p>Rating</p>
-          </Col>
-          <Col span={18} style={{ background: "lightblue" }}>
-            <p>Comment</p>
-            <p>
-              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore
-              dolores itaque reprehenderit sapiente voluptatem ratione debitis
-              iure, sed quae nostrum officiis dicta voluptates hic ea?
-            </p>
-          </Col>
-        </Row>
-      </FeedCard>
+
+      {fakeData.map(item => (
+        <FeedCardComponent key={item.id} user={item} />
+      ))}
     </>
   );
 };
