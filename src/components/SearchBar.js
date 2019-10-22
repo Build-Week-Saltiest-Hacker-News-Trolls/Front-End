@@ -39,11 +39,10 @@ export default function SearchBar({ comments }) {
         </SearchForm>         
       </section> 
       <>
-      {/* Map over incoming or filtered comments */}
-
-      {conditionalRender().map(item => (
-        <FeedCardComponent key={item.id} comment={item} />
-      ))}
+      {/* Map over comment list or filtered comments or display user not found */}
+      {searchResults.length !== 0 ? 
+        conditionalRender().map(item => (<FeedCardComponent key={item.id} comment={item} />
+        )): <div>User Not Found</div>}
       </>
     </>
   )
