@@ -45,7 +45,6 @@ function App() {
           value={{ favComments, removeFromFavComments }}
         >
           <Route exact path="/" component={Landing} />
-          <Route exact path="/search" component={SearchBar} />
           {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
           <Route exact path="/dashboard" component={Dashboard} />
         </FavCommentContext.Provider>
