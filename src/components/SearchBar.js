@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import FeedCardComponent from "./FeedCardComponent.js";
 import { SearchForm } from "../theme/Styled.js";
 
+// <========== pass in comments through props ============>
 export default function SearchBar({ comments }) {
   const [ searchTerm, setSearchTerm ] = useState("");
   const [ searchResults, setSearchResults ] = useState([]);
