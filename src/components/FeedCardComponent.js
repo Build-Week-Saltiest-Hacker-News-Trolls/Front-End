@@ -7,8 +7,9 @@ const FeedCardComponent = props => {
     id,
     username,
     commentDate,
-    rating,
-    ratingType,
+    positive,
+    negative,
+    neutral,
     comment
   } = props.comment;
 
@@ -21,8 +22,12 @@ const FeedCardComponent = props => {
           <Col span={6} style={{ background: "lightblue" }}>
             <strong>{username}</strong>
             <p>{commentDate}</p>
-            <h3>{rating}</h3>
-            <strong>{ratingType}</strong>
+            <h3>
+              {Math.abs(positive) > Math.abs(negative) ? positive : negative}
+            </h3>
+            <strong>
+              {Math.abs(positive) > Math.abs(negative) ? "Positive" : "Salty"}
+            </strong>
           </Col>
           <Col span={18} style={{ background: "lightblue" }}>
             <strong>Comment</strong>
