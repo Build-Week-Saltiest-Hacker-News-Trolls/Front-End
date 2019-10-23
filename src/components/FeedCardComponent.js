@@ -30,11 +30,11 @@ const FeedCardComponent = props => {
               }}
             >
               <div classname="leftTop">
-                <strong>{username}</strong>
+                <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
                 <p>{commentDate}</p>
               </div>
               <div className="leftBottom">
-                <h3>
+                <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(positive) > Math.abs(negative)
                     ? positive
                     : negative}
@@ -57,7 +57,7 @@ const FeedCardComponent = props => {
                 height: "230px"
               }}
             >
-              <strong>Comment</strong>
+              <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
               <p>{comment}</p>
             </div>
           </Col>

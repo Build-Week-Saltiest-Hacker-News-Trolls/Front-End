@@ -77,3 +77,11 @@ export const SearchForm = styled.form`
   padding-bottom: 18px;
   color: black;
 `;
+
+export const FeedCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+`;

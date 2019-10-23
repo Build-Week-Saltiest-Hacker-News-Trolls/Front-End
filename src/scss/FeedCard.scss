@@ -2,5 +2,5 @@
 
 .leftTop {
   @include flex(column, space-between, align-items);
-  background-color: red;
+  background-color: #ff0000;
 }
