@@ -1,6 +1,7 @@
 import React from "react";
 import { FeedCard } from "../theme/Styled.js";
 import { Row, Col } from "antd";
+import "../scss/FeedCard.scss";
 
 const FeedCardComponent = props => {
   const {
