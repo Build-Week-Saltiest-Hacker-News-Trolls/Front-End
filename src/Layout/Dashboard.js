@@ -5,6 +5,7 @@ import Graph from "../components/Graph.js";
 import { CommentContext } from "../Context/CommentContext.js";
 import { FavCommentContext } from "../Context/FavCommentContext.js";
 import SearchBar from "../components/SearchBar.js";
+import Footer from "./Footer.js";
 
 const Dashboard = props => {
   const { comments, addToFavComments } = useContext(CommentContext);
@@ -15,6 +16,7 @@ const Dashboard = props => {
       <Graph comments={comments} />
       <SearchBar comments={comments} />
       {/* <Feed /> */}
+      <Footer />
     </>
   );
 };
