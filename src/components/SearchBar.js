@@ -12,7 +12,19 @@ export default function SearchBar({ comments }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [filter, setFilter] = useState({ order: "", sentiment: "" });
-  const { favComments, addFavComments } = useContext(FavCommentContext);
+  const { favCommentsList, setFavCommentsList } = useContext(FavCommentContext);
+  
+
+  const addToFavCommentsList = comment => {
+    // setFavCommentsList( [...favCommentsList, comment] ); <--returns favCommentList not iterable
+  };
+
+  // <============ Handle Favorites Icon Click ===============>
+  const handleFavorite = (e) => {
+    // e.preventDefault();
+    // addFavComments(e.target.id);
+  console.log("Favorte Pressed!", "Target Id: ", e, "Favorite Comments: ", favCommentsList);
+  }
 
   // <========== set search term state each keystoke ============>
   const handleChange = e => {
@@ -56,13 +68,7 @@ export default function SearchBar({ comments }) {
     return searchTerm === "" ? comments : searchResults;
   };
 
-  // <============ Handle Favorites Icon Click ===============>
-  const handleFavorite = (e) => {
-    // preventDefault();
-    // addFavComments(e.target.id);
-    // console.log("Target Id: ", e.target.id, "Favorite Comments: ", favComments);
-  }
-
+  
   return (
     // TODO:
     // form needs updated styling to match rest of overall dashboard design
@@ -92,7 +98,12 @@ export default function SearchBar({ comments }) {
         {/* Map over comment list or filtered comments or null */}
         {searchResults.length !== 0 ? (
           conditionalRender().map(item => (
-            <FeedCardComponent key={item.id} comment={item} handleFavorite={handleFavorite} />
+            <FeedCardComponent 
+              key={item.id} 
+              comment={item} 
+              handleFavorite={handleFavorite}
+              addToFavCommentsList={addToFavCommentsList}
+            />
           ))
         ) : (
           <div>User Not Found</div>

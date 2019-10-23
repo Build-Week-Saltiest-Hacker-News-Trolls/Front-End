@@ -59,12 +59,13 @@ const FeedCardComponent = props => {
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
               <p>{comment}</p>
               <div>
-                <button className="fav-icon" onClick={props.handleFavorite()}>
+                <button className="fav-icon" onClick={props.addToFavCommentsList(comment)}>
                   <Icon  
                     type="heart" 
                     theme="twoTone"
                     twoToneColor="rgba(204, 41, 54, 1)" 
                   />
+                  <strong>Add to Favorites</strong>
                 </button>
               </div>         
             </div>
