@@ -1,6 +1,12 @@
 import React, { useState, useEffect } from "react";
 
+<<<<<<< HEAD
 import { Statistic, Icon, Progress, Row, Col } from "antd";
+=======
+import { Statistic, Icon, Progress, Row, Col, Select } from "antd";
+
+const { Option } = Select;
+>>>>>>> db31289c11cf88a69d446b1a1f0df2be022acf15
 
 const Graph = ({ comments }) => {
   const [currentMood, setCurrentMood] = useState({
@@ -71,6 +77,14 @@ const Graph = ({ comments }) => {
               strokeColor="red"
             />
           </div>
+<<<<<<< HEAD
+=======
+          <Select defaultValue="0">
+            <Option value="1">1</Option>
+            <Option value="2">2</Option>
+            <Option value="3">3</Option>
+          </Select>
+>>>>>>> db31289c11cf88a69d446b1a1f0df2be022acf15
         </Col>
       </Row>
     </Row>
