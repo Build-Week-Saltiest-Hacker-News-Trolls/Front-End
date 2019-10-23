@@ -8,7 +8,7 @@ export const UMBButton = styled.button`
   padding: 6px 15px;
   box-shadow: 1px 1px 1px whitesmoke;
   transition: 400ms;
-  
+
   &:hover {
     filter: hue-rotate(-30deg) brightness(110%);
     box-shadow: 3px 3px 10px lightgray;
@@ -63,15 +63,48 @@ export const FeedCard = styled.div`
   box-shadow: 1px 1px 3px silver;
   width: 400px;
   height: 250px;
+  padding: 10px;
+  margin: 10px;
 `;
 
 export const SearchForm = styled.form`
   border-bottom: none;
-  border: 3px solid silver;  
-  border-radius: 10px;  
+  border: 3px solid silver;
+  border-radius: 10px;
   width: 50%;
   height: 50px;
   margin: 15px auto;
+  margin-bottom: 100px;
   padding-bottom: 18px;
   color: black;
+`;
+
+export const FootSpan = styled.span`
+    font-size: 1.5rem;
+    margin-left: 20px;
+`
+
+export const Outer = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+`
+
+export const Inner = styled.div`
+    width: 75%;
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-end;
+    align-items: center;
+    span {
+      margin: 20px;
+    }
+`
+export const FeedCardContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
 `;

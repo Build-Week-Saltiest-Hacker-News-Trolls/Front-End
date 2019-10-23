@@ -1,0 +1,6 @@
+@import "../theme/index.scss";
+
+.leftTop {
+  @include flex(column, space-between, align-items);
+  background-color: #ff0000;
+}
