@@ -6,6 +6,7 @@ export default function SearchBar({ comments }) {
   const [ searchTerm, setSearchTerm ] = useState("");
   const [ searchResults, setSearchResults ] = useState([]);
 
+  // <========== set search term state each keystoke ============>
   const handleChange = e => {
     setSearchTerm(e.target.value)
   }
@@ -17,17 +18,18 @@ export default function SearchBar({ comments }) {
     console.log("Search Results", searchResults)
   }, [searchTerm])
 
-  // <============= Render search results or full comment list ============>
+  // <============= Render full comment list or searchResults(if any) ============>
   const conditionalRender = () => {
     return searchTerm === "" ? comments : searchResults;
   }
 
  
   return (
-    // form needs updated styling
+    // form needs updated styling to match rest of overall dashboard design
     <>
-      <section className="search-form">    
-        <SearchForm>
+      <section className="search-form"> 
+        {/* Styled Component */}
+        <SearchForm> 
           <input size="large" 
             id="search"
             value={searchTerm}
@@ -39,11 +41,10 @@ export default function SearchBar({ comments }) {
         </SearchForm>         
       </section> 
       <>
-      {/* Map over incoming or filtered comments */}
-
-      {conditionalRender().map(item => (
-        <FeedCardComponent key={item.id} comment={item} />
-      ))}
+      {/* Map over comment list or filtered comments or null */}
+      {searchResults.length !== 0 ? 
+        conditionalRender().map(item => (<FeedCardComponent key={item.id} comment={item} />
+        )): <div>User Not Found</div>}
       </>
     </>
   )
