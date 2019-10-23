@@ -7,7 +7,7 @@ import { Select } from "antd";
 
 const { Option } = Select;
 
-// <========== pass in comments through props ============>
+//  pass in comments through props 
 export default function SearchBar({ comments }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -19,19 +19,19 @@ export default function SearchBar({ comments }) {
     // setFavCommentsList( [...favCommentsList, comment] ); <--returns favCommentList not iterable
   };
 
-  // <============ Handle Favorites Icon Click ===============>
+  //  Handle Favorites Icon Click 
   const handleFavorite = (e) => {
     // e.preventDefault();
     // addFavComments(e.target.id);
   console.log("Favorte Pressed!", "Target Id: ", e, "Favorite Comments: ", favCommentsList);
   }
 
-  // <========== set search term state each keystoke ============>
+  //  set search term state each keystoke 
   const handleChange = e => {
     setSearchTerm(e.target.value);
   };
 
-  // <============= filter by drop down selection=============>
+  //  filter by drop down selection
   const orderSort = e => {
     let sortedResults = [];
     sortedResults = searchResults.sort(function(a, b) {
@@ -54,7 +54,7 @@ export default function SearchBar({ comments }) {
     sentimentFilter();
   }, [filter]);
 
-  // <============= search filter function - runs each time seach value changes ======================>
+  // search filter function - runs each time seach value changes
   useEffect(() => {
     const results = comments.filter(comment =>
       comment.username.toLowerCase().includes(searchTerm)
@@ -63,7 +63,7 @@ export default function SearchBar({ comments }) {
     console.log("Search Results", searchResults);
   }, [searchTerm]);
 
-  // <============= Render full comment list or searchResults(if any) ============>
+  // Render full comment list or searchResults(if any)
   const conditionalRender = () => {
     return searchTerm === "" ? comments : searchResults;
   };

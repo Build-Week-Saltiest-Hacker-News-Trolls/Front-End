@@ -15,15 +15,15 @@ import { fakeCommentData, fakeUserData } from "./fakeData.js";
 //Axios call goes here and data is added to "comments" state
 
 function App() {
-  //====================user context====================
+  //user context
   const [user, setUser] = useState(fakeUserData);
   //user context
 
-  //====================comments context====================
+  //comments context
   const [comments, setComments] = useState(fakeCommentData);
-  //====================comments context====================
+  //comments context
 
-  //====================fav comments context====================
+  //fav comments context
 
   const [favComments, setFavComments] = useState([]);
 
@@ -38,7 +38,7 @@ function App() {
       })
     );
   };
-  //====================fav comments context====================
+  //fav comments context
 
   return (
     <main>
