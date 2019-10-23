@@ -3,7 +3,7 @@ export const fakeCommentData = [
     id: 0,
     username: "Martin",
     commentDate: "01/15/2020",
-    positive: 0.5,
+    positive: 0.8,
     negative: -0.113,
     neutral: 0,
     comment:
@@ -13,8 +13,8 @@ export const fakeCommentData = [
     id: 1,
     username: "Karthik",
     commentDate: "06/01/2020",
-    positive: -0.74,
-    negative: 0.46,
+    positive: 0.74,
+    negative: -0.46,
     neutral: -0.25,
     comment:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
@@ -24,7 +24,7 @@ export const fakeCommentData = [
     username: "Denton",
     commentDate: "10/01/2020",
     positive: 0.5,
-    negative: 0.09,
+    negative: -0.09,
     neutral: 0.72,
     comment:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
@@ -43,8 +43,8 @@ export const fakeCommentData = [
     id: 4,
     username: "Chris",
     commentDate: "01/03/2020",
-    positive: -0.84,
-    negative: 0.86,
+    positive: 0.84,
+    negative: -0.86,
     neutral: 0.33,
     comment:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
@@ -53,8 +53,8 @@ export const fakeCommentData = [
     id: 5,
     username: "Vinni",
     commentDate: "01/09/2020",
-    positive: -0.66,
-    negative: 0.16,
+    positive: 0.66,
+    negative: -0.16,
     neutral: 0.66,
     comment:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"
@@ -64,7 +64,7 @@ export const fakeCommentData = [
     username: "Steve",
     commentDate: "05/01/2020",
     positive: 0.3,
-    negative: 0.88,
+    negative: -0.88,
     neutral: 0.58,
     comment:
       "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Labore dolores itaque reprehenderit sapiente voluptatem ratione debitis iure, sed quae nostrum officiis dicta voluptates hic ea?"

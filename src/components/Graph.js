@@ -1,23 +1,79 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 
-import { Statistic, Icon, Progress } from "antd";
+import { Statistic, Icon, Progress, Row, Col } from "antd";
 
-const Graph = props => {
+const Graph = ({ comments }) => {
+  const [currentMood, setCurrentMood] = useState({
+    positive: 0,
+    negative: 0
+  });
+
+  useEffect(() => {
+    let mood = {
+      positive: 0,
+      negative: 0
+    };
+    let positive = comments.map(comment => {
+      return (mood.positive += comment.positive);
+    });
+    let negative = comments.map(comment => {
+      return (mood.negative += comment.negative);
+    });
+
+    const positiveAggregate = mood.positive / comments.length;
+    const negativeAggregate = mood.negative / comments.length;
+    console.log(positiveAggregate, negativeAggregate);
+    setCurrentMood({
+      positive: positiveAggregate * 100,
+      negative: negativeAggregate * -100
+    });
+  }, [comments]);
+
   return (
-    <div>
-      <Statistic
-        title="Feedback"
-        value={props.comments.length}
-        prefix={<Icon type="number" />}
-      />
-      <Statistic
-        title="Latest"
-        value={props.date}
-        prefix={<Icon type="calendar" />}
-      />
-      <Progress percent={props.saltiness} status="active" />
-      <Progress percent={props.positive} status="active" />
-    </div>
+    <Row style={{ marginTop: "20px" }}>
+      <Row gutter={[48, 48]}>
+        <Col span={12} align="middle">
+          <Statistic
+            title="Total Comments"
+            value={comments.length}
+            prefix={<Icon type="number" />}
+          />
+        </Col>
+        <Col span={12} align="middle">
+          <Statistic
+            title="Overall Mood"
+            value={
+              currentMood.positive * currentMood.negative > 0
+                ? "Positive"
+                : "Negative"
+            }
+            prefix={<Icon type="fire" />}
+          />
+        </Col>
+        <Col span={12} align="middle">
+          <div>
+            <p>Positive</p>
+            <Progress
+              percent={Math.floor(currentMood.positive)}
+              type="dashboard"
+              status="active"
+              strokeColor="green"
+            />
+          </div>
+        </Col>
+        <Col span={12} align="middle">
+          <div>
+            <p>Negative</p>
+            <Progress
+              percent={Math.floor(currentMood.negative)}
+              type="dashboard"
+              status="active"
+              strokeColor="red"
+            />
+          </div>
+        </Col>
+      </Row>
+    </Row>
   );
 };
 
