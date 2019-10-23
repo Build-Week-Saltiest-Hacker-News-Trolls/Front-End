@@ -1,12 +1,6 @@
 import React from "react";
 import { FeedCard } from "../theme/Styled.js";
-<<<<<<< HEAD
 import { Row, Col, Icon } from "antd";
-=======
-import "../scss/FeedCard.scss";
-import { Row, Col } from "antd";
-import "../scss/FeedCard.scss";
->>>>>>> db31289c11cf88a69d446b1a1f0df2be022acf15
 
 const FeedCardComponent = props => {
   const {
@@ -34,7 +28,7 @@ const FeedCardComponent = props => {
                 height: "230px"
               }}
             >
-              <div classname="leftTop">
+              <div className="leftTop">
                 <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
                 <p>{commentDate}</p>
               </div>
@@ -64,10 +58,18 @@ const FeedCardComponent = props => {
             >
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
               <p>{comment}</p>
+              <div>
+                <button className="fav-icon" onClick={props.handleFavorite()}>
+                  <Icon  
+                    type="heart" 
+                    theme="twoTone"
+                    twoToneColor="rgba(204, 41, 54, 1)" 
+                  />
+                </button>
+              </div>         
             </div>
           </Col>
         </Row>
-        <Icon onClick={props.handleFavorite} type="heart" theme="outlined" />
       </FeedCard>
     </>
   );

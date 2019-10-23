@@ -15,7 +15,7 @@ const Dashboard = props => {
     <>
       <NavBar />
       <Graph comments={comments} />
-      <SearchBar comments={comments} addToFavComments={addToFavComments} />
+      <SearchBar comments={comments} />
       {/* <Feed /> */}
       <Footer />
     </>
