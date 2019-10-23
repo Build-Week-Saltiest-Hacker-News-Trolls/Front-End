@@ -8,13 +8,14 @@ import SearchBar from "../components/SearchBar.js";
 import Footer from "./Footer.js";
 
 const Dashboard = props => {
-  const { comments, addToFavComments } = useContext(CommentContext);
+  const { comments, addComments } = useContext(CommentContext);
+  
 
   return (
     <>
       <NavBar />
       <Graph comments={comments} />
-      <SearchBar comments={comments} />
+      <SearchBar comments={comments} addToFavComments={addToFavComments} />
       {/* <Feed /> */}
       <Footer />
     </>

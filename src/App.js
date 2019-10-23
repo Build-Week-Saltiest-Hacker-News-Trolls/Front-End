@@ -50,7 +50,6 @@ function App() {
           <UserContext.Provider value={user}>
             <Route exact path="/" component={Landing} />
             <Route exact path="/edit" component={EditUser} />
-            <Route exact path="/search" component={SearchBar} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
           </UserContext.Provider>

@@ -1,6 +1,6 @@
 import React from "react";
 import { FeedCard } from "../theme/Styled.js";
-import { Row, Col } from "antd";
+import { Row, Col, Icon } from "antd";
 
 const FeedCardComponent = props => {
   const {
@@ -34,6 +34,7 @@ const FeedCardComponent = props => {
             <p>{comment}</p>
           </Col>
         </Row>
+        <Icon onClick={props.handleFavorite} type="heart" theme="outlined" />
       </FeedCard>
     </>
   );
