@@ -16,15 +16,15 @@ import { fakeCommentData, fakeUserData } from "./fakeData.js";
 //Axios call goes here and data is added to "comments" state
 
 function App() {
-  //====================user context====================
+  //user context
   const [user, setUser] = useState(fakeUserData);
   //user context
 
-  //====================comments context====================
+  //comments context
   const [comments, setComments] = useState(fakeCommentData);
-  //====================comments context====================
+  //comments context
 
-  //====================fav comments context====================
+  //fav comments context
 
   const [favComments, setFavComments] = useState([]);
 
@@ -39,7 +39,7 @@ function App() {
       })
     );
   };
-  //====================fav comments context====================
+  //fav comments context
 
   return (
     <main>
@@ -47,14 +47,12 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
-
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={{ user, setUser }}>
             <Route exact path="/" component={Landing} />
             <Route exact path="/edit" component={EditUser} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
           </UserContext.Provider>
-
         </FavCommentContext.Provider>
       </CommentContext.Provider>
     </main>
