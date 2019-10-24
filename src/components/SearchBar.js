@@ -7,26 +7,35 @@ import { Select } from "antd";
 
 const { Option } = Select;
 
-//  pass in comments through props 
-export default function SearchBar({ comments }) {
+//  pass in comments through props
+export default function SearchBar({
+  comments,
+  setSearchedComments,
+  setSearchedTerm
+}) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [filter, setFilter] = useState({ order: "", sentiment: "" });
   const { favCommentsList, setFavCommentsList } = useContext(FavCommentContext);
-  
 
   const addToFavCommentsList = comment => {
     // setFavCommentsList( [...favCommentsList, comment] ); <--returns favCommentList not iterable
   };
 
-  //  Handle Favorites Icon Click 
-  const handleFavorite = (e) => {
+  //  Handle Favorites Icon Click
+  const handleFavorite = e => {
     // e.preventDefault();
     // addFavComments(e.target.id);
-  console.log("Favorte Pressed!", "Target Id: ", e, "Favorite Comments: ", favCommentsList);
-  }
+    console.log(
+      "Favorte Pressed!",
+      "Target Id: ",
+      e,
+      "Favorite Comments: ",
+      favCommentsList
+    );
+  };
 
-  //  set search term state each keystoke 
+  //  set search term state each keystoke
   const handleChange = e => {
     setSearchTerm(e.target.value);
   };
@@ -60,6 +69,8 @@ export default function SearchBar({ comments }) {
       comment.username.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
+    setSearchedComments(results);
+    setSearchedTerm(searchTerm);
     console.log("Search Results", searchResults);
   }, [searchTerm]);
 
@@ -68,7 +79,6 @@ export default function SearchBar({ comments }) {
     return searchTerm === "" ? comments : searchResults;
   };
 
-  
   return (
     // TODO:
     // form needs updated styling to match rest of overall dashboard design
@@ -98,9 +108,9 @@ export default function SearchBar({ comments }) {
         {/* Map over comment list or filtered comments or null */}
         {searchResults.length !== 0 ? (
           conditionalRender().map(item => (
-            <FeedCardComponent 
-              key={item.id} 
-              comment={item} 
+            <FeedCardComponent
+              key={item.id}
+              comment={item}
               handleFavorite={handleFavorite}
               addToFavCommentsList={addToFavCommentsList}
             />

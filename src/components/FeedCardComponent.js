@@ -19,7 +19,7 @@ const FeedCardComponent = props => {
     <>
       <FeedCard>
         <Row>
-          <Col span={9}>
+          <Col span={10}>
             <div
               style={{
                 display: "flex",
@@ -35,8 +35,8 @@ const FeedCardComponent = props => {
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(positive) > Math.abs(negative)
-                    ? positive
-                    : negative}
+                    ? positive * 100 + "%"
+                    : negative * 100 + "%"}
                 </h3>
                 <strong>
                   {Math.abs(positive) > Math.abs(negative)
@@ -47,7 +47,7 @@ const FeedCardComponent = props => {
             </div>
           </Col>
 
-          <Col span={13}>
+          <Col span={14}>
             <div
               style={{
                 display: "flex",
@@ -59,15 +59,18 @@ const FeedCardComponent = props => {
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
               <p>{comment}</p>
               <div>
-                <button className="fav-icon" onClick={props.addToFavCommentsList(comment)}>
-                  <Icon  
-                    type="heart" 
+                <button
+                  className="fav-icon"
+                  onClick={props.addToFavCommentsList(comment)}
+                >
+                  <Icon
+                    type="heart"
                     theme="twoTone"
-                    twoToneColor="rgba(204, 41, 54, 1)" 
+                    twoToneColor="rgba(204, 41, 54, 1)"
                   />
                   <strong>Add to Favorites</strong>
                 </button>
-              </div>         
+              </div>
             </div>
           </Col>
         </Row>
