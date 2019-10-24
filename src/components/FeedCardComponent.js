@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useState } from "react";
 import { FeedCard } from "../theme/Styled.js";
-import "../scss/FeedCard.scss";
 import { Row, Col } from "antd";
-import "../scss/FeedCard.scss";
+import { Link } from "react-router-dom";
 
-const FeedCardComponent = props => {
+const FeedCardComponent = ({
+  setSelectedUsername,
+  commentItem,
+  toggleUserView
+}) => {
   const {
     id,
     username,
@@ -13,10 +16,17 @@ const FeedCardComponent = props => {
     negative,
     neutral,
     comment
-  } = props.comment;
+  } = commentItem;
 
-  console.log(username);
-  console.log("props from feedcard.js", props);
+  const toggleClickHandler = e => {
+    toggleUserView();
+    setSelectedUsername(username);
+    console.log("event from click handler", e);
+  };
+  // console.log("toggleUserView from feedCard", toggleUserView);
+
+  // console.log(username);
+  // console.log("props from feedcard.js", props);
   return (
     <>
       <FeedCard>
@@ -30,8 +40,14 @@ const FeedCardComponent = props => {
                 height: "230px"
               }}
             >
-              <div classname="leftTop">
-                <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
+              <div className="leftTop">
+                <strong
+                  onClick={toggleClickHandler}
+                  style={{ fontSize: "1.15rem" }}
+                >
+                  {username}
+                </strong>
+
                 <p>{commentDate}</p>
               </div>
               <div className="leftBottom">
