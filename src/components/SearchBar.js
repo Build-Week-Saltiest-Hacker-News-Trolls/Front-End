@@ -45,6 +45,7 @@ export default function SearchBar({ comments }) {
     <>
       {userView ? (
         <FeedCardContainer key={selectedUsername}>
+          <h3 onClick={toggleUserView}>X</h3>
           <FeedCardDetails selectedUsername={selectedUsername} />
         </FeedCardContainer>
       ) : (
