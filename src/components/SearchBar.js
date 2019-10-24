@@ -33,35 +33,48 @@ export default function SearchBar({ comments }) {
 
   //  filter by drop down selection
   const orderSort = e => {
-    let sortedResults = [];
-    sortedResults = searchResults.sort(function(a, b) {
-      return e == "1" ? a - b : b - a; // 1 = ascending, else descending
+    sortedResults = e.sort(function(a, b) {
+      switch(filter.sentiment) {
+        case "0":
+          break;
+        case "1":
+          a = a.comment.neutral;
+          b = b.comment.neutral;
+          break;
+        case "2":
+          a = a.comment.positive;
+          b = b.comment.positive;
+          break;
+        case "3":
+          a = a.comment.negative;
+          b = b.comment.negative;
+          break;
+      }
+      switch(filter.order){
+        case "0":
+          return null
+        case "1":
+          return a-b
+        case "2":
+          return b-a
+      }
     });
-    setSearchResults(sortedResults);
+    return sortedResults;
   };
 
-  const sentimentFilter = e => {
-    let filteredResults = [];
-    setSearchResults(filteredResults);
-  };
-
-  const handleSort = e => {
+  const handleSortFilter = e => {
     setFilter({ ...filter, [e.target.name]: e.target.value });
   };
-
-  useEffect(() => {
-    orderSort(filter.order);
-    sentimentFilter();
-  }, [filter]);
 
   // search filter function - runs each time seach value changes
   useEffect(() => {
     const results = comments.filter(comment =>
       comment.username.toLowerCase().includes(searchTerm)
     );
+    results = orderSort(results);
     setSearchResults(results);
     console.log("Search Results", searchResults);
-  }, [searchTerm]);
+  }, [searchTerm, filter]);
 
   // Render full comment list or searchResults(if any)
   const conditionalRender = () => {
@@ -86,10 +99,26 @@ export default function SearchBar({ comments }) {
             onChange={handleChange}
           />
           <label>
-            Sort:
-            <Select defaultValue="" onChange={orderSort}>
+            Sort Order:
+            <Select 
+              name="order"
+              defaultValue="0"
+              onChange={handleSortFilter(value)}
+            >
               <Option value="1">Ascending</Option>
               <Option value="2">Descending</Option>
+            </Select>
+          </label>
+          <label>
+            Filter By:
+            <Select 
+              name="filter"
+              defaultValue="0"
+              onChange={handleSortFilter(value)}
+            >
+              <Option value="1">Neutrality</Option>
+              <Option value="2">Positivity</Option>
+              <Option value="3">Negativity</Option>
             </Select>
           </label>
         </SearchForm>
