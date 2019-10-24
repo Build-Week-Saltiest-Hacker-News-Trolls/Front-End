@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FavCommentContext } from "../Context/FavCommentContext.js";
 import FeedCardComponent from "./FeedCardComponent.js";
-import FavCardComponent from "../components/FavCardComponent.js";
 import { FeedCardContainer } from "../theme/Styled.js";
 import { SearchForm } from "../theme/Styled.js";
 import { Select } from "antd";
