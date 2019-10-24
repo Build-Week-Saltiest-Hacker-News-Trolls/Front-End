@@ -46,14 +46,12 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
-
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={{ user, setUser }}>
             <Route exact path="/" component={Landing} />
             <Route exact path="/edit" component={EditUser} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
           </UserContext.Provider>
-
         </FavCommentContext.Provider>
       </CommentContext.Provider>
     </main>
