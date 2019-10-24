@@ -1,15 +1,6 @@
-<<<<<<< HEAD
 @import "../theme/index.scss";
 
 .leftTop {
   @include flex(column, space-between, align-items);
   background-color: #ff0000;
 }
-=======
-@import "../theme/index.scss";
-
-.leftTop {
-  @include flex(column, space-between, align-items);
-  background-color: #ff0000;
-}
->>>>>>> db31289c11cf88a69d446b1a1f0df2be022acf15
