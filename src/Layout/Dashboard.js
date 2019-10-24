@@ -10,7 +10,6 @@ import SearchBar from "../components/SearchBar.js";
 import Footer from "./Footer.js";
 
 const Dashboard = props => {
-  const { comments, addComments } = useContext(CommentContext);
   const { comments, addToFavComments } = useContext(CommentContext);
   const { favComments, removeFromFavComments } = useContext(FavCommentContext);
   const [searchedComments, setSearchedComments] = useState([]);
