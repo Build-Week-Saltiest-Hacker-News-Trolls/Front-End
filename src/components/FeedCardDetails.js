@@ -9,7 +9,7 @@ const FeedCardDetails = props => {
   console.log(userCommentInfo);
 
   useEffect(() => {
-    const searchUsername = props.match.params.username;
+    const searchUsername = props.selectedUsername;
     setUserCommentInfo(
       fakeCommentData.filter(comment => {
         return comment.username === searchUsername;

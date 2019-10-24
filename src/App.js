@@ -53,10 +53,6 @@ function App() {
             <Route exact path="/search" component={SearchBar} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
-            <Route
-              path="/dashboard/user/:username"
-              component={FeedCardDetails}
-            />
           </UserContext.Provider>
         </FavCommentContext.Provider>
       </CommentContext.Provider>
