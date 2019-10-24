@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
 import EditUser from "./components/EditUser.js";
+import FavCardComponent from "./components/FavCardComponent.js";
 import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
 import Landing from "./Layout/Landing.js";
@@ -50,7 +51,6 @@ function App() {
           <UserContext.Provider value={user}>
             <Route exact path="/" component={Landing} />
             <Route exact path="/edit" component={EditUser} />
-            <Route exact path="/search" component={SearchBar} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
           </UserContext.Provider>
