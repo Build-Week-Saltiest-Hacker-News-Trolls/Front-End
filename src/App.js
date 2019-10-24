@@ -5,6 +5,7 @@ import SignUp from "./SignInLayout/SignUp";
 import EditUser from "./components/EditUser.js";
 import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
+import FeedCardDetails from "./components/FeedCardDetails";
 import Landing from "./Layout/Landing.js";
 import Dashboard from "./Layout/Dashboard.js";
 import { CommentContext } from "./Context/CommentContext.js";
@@ -46,15 +47,17 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
-
           <UserContext.Provider value={user}>
             <Route exact path="/" component={Landing} />
             <Route exact path="/edit" component={EditUser} />
             <Route exact path="/search" component={SearchBar} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
+            <Route
+              path="/dashboard/user/:username"
+              component={FeedCardDetails}
+            />
           </UserContext.Provider>
-
         </FavCommentContext.Provider>
       </CommentContext.Provider>
     </main>

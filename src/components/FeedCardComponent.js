@@ -1,8 +1,7 @@
 import React from "react";
 import { FeedCard } from "../theme/Styled.js";
-import "../scss/FeedCard.scss";
 import { Row, Col } from "antd";
-import "../scss/FeedCard.scss";
+import { Link } from "react-router-dom";
 
 const FeedCardComponent = props => {
   const {
@@ -30,8 +29,10 @@ const FeedCardComponent = props => {
                 height: "230px"
               }}
             >
-              <div classname="leftTop">
-                <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
+              <div className="leftTop">
+                <Link key={id} to={`/dashboard/user/${username}`}>
+                  <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
+                </Link>
                 <p>{commentDate}</p>
               </div>
               <div className="leftBottom">

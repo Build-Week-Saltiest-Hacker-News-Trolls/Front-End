@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import FeedCardComponent from "./FeedCardComponent.js";
 import { SearchForm, FeedCardContainer } from "../theme/Styled.js";
-
+import { Link } from "react-router-dom";
 // <========== pass in comments through props ============>
 export default function SearchBar({ comments }) {
   const [searchTerm, setSearchTerm] = useState("");
