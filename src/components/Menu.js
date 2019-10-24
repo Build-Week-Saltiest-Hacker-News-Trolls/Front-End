@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { UMBButton } from "../theme/Styled.js";
 
 import "../scss/Menu.scss";
@@ -26,9 +26,13 @@ const Menu = props => {
           <NavLink to="/">Marketing Page</NavLink>
           <NavLink to="/about">About the Team</NavLink>
           <NavLink to="/contact">Contact</NavLink>
-          <NavLink to="/edit"><span>Edit User Info</span></NavLink>
+          <NavLink to="/edit">
+            <span>Edit User Info</span>
+          </NavLink>
         </div>
-        <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
+        <Link to="/">
+          <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
+        </Link>
       </Drawer>
     </>
   );

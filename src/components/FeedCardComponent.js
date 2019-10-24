@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { FeedCard } from "../theme/Styled.js";
-import { Row, Col } from "antd";
-import { Link } from "react-router-dom";
+import { Row, Col, Icon } from "antd";
 
 const FeedCardComponent = ({
   setSelectedUsername,
@@ -76,6 +75,19 @@ const FeedCardComponent = ({
             >
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
               <p>{comment}</p>
+              <div>
+                <button
+                  className="fav-icon"
+                  // onClick={props.addToFavCommentsList(comment)}
+                >
+                  <Icon
+                    type="heart"
+                    theme="twoTone"
+                    twoToneColor="rgba(204, 41, 54, 1)"
+                  />
+                  <strong>Add to Favorites</strong>
+                </button>
+              </div>
             </div>
           </Col>
         </Row>

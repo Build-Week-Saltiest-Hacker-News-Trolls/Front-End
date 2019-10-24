@@ -1,14 +1,21 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { FavCommentContext } from "../Context/FavCommentContext.js";
 import FeedCardComponent from "./FeedCardComponent.js";
+
 import FeedCardDetails from "./FeedCardDetails.js";
 import { SearchForm, FeedCardContainer } from "../theme/Styled.js";
 import { Link } from "react-router-dom";
+import { Select } from "antd";
+
+const { Option } = Select;
 // <========== pass in comments through props ============>
 export default function SearchBar({ comments }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);
   const [selectedUsername, setSelectedUsername] = useState("");
+  const [filter, setFilter] = useState({ order: "", sentiment: "" });
+  const { favCommentsList, setFavCommentsList } = useContext(FavCommentContext);
 
   const toggleUserView = e => {
     setUserView(!userView);
@@ -20,12 +27,48 @@ export default function SearchBar({ comments }) {
     selectedUsername
   );
 
-  // <========== set search term state each keystoke ============>
+  //  Handle Favorites Icon Click
+  const handleFavorite = e => {
+    // e.preventDefault();
+    // addFavComments(e.target.id);
+    console.log(
+      "Favorte Pressed!",
+      "Target Id: ",
+      e,
+      "Favorite Comments: ",
+      favCommentsList
+    );
+  };
+
+  //  set search term state each keystoke
   const handleChange = e => {
     setSearchTerm(e.target.value);
   };
 
-  // <============= search filter function - runs each time seach value changes ======================>
+  //  filter by drop down selection
+  const orderSort = e => {
+    let sortedResults = [];
+    sortedResults = searchResults.sort(function(a, b) {
+      return e == "1" ? a - b : b - a; // 1 = ascending, else descending
+    });
+    setSearchResults(sortedResults);
+  };
+
+  const sentimentFilter = e => {
+    let filteredResults = [];
+    setSearchResults(filteredResults);
+  };
+
+  const handleSort = e => {
+    setFilter({ ...filter, [e.target.name]: e.target.value });
+  };
+
+  useEffect(() => {
+    orderSort(filter.order);
+    sentimentFilter();
+  }, [filter]);
+
+  // search filter function - runs each time seach value changes
   useEffect(() => {
     const results = comments.filter(comment =>
       comment.username.toLowerCase().includes(searchTerm)
@@ -34,7 +77,7 @@ export default function SearchBar({ comments }) {
     console.log("Search Results", searchResults);
   }, [searchTerm]);
 
-  // <============= Render full comment list or searchResults(if any) ============>
+  // Render full comment list or searchResults(if any)
   const conditionalRender = () => {
     return searchTerm === "" ? comments : searchResults;
   };

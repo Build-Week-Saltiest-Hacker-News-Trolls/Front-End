@@ -36,7 +36,7 @@ const Graph = ({ comments }) => {
           <Statistic
             title="Total Comments"
             value={comments.length}
-            prefix={<Icon type="number" />}
+            prefix={<Icon type="unordered-list" />}
           />
         </Col>
         <Col span={12} align="middle">

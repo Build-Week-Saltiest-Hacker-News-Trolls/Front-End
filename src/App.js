@@ -3,6 +3,7 @@ import { Route } from "react-router-dom";
 import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
 import EditUser from "./components/EditUser.js";
+import FavCardComponent from "./components/FavCardComponent.js";
 import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
 import FeedCardDetails from "./components/FeedCardDetails";
@@ -16,15 +17,15 @@ import { fakeCommentData, fakeUserData } from "./fakeData.js";
 //Axios call goes here and data is added to "comments" state
 
 function App() {
-  //====================user context====================
+  //user context
   const [user, setUser] = useState(fakeUserData);
   //user context
 
-  //====================comments context====================
+  //comments context
   const [comments, setComments] = useState(fakeCommentData);
-  //====================comments context====================
+  //comments context
 
-  //====================fav comments context====================
+  //fav comments context
 
   const [favComments, setFavComments] = useState([]);
 
@@ -39,7 +40,7 @@ function App() {
       })
     );
   };
-  //====================fav comments context====================
+  //fav comments context
 
   return (
     <main>
@@ -47,10 +48,9 @@ function App() {
         <FavCommentContext.Provider
           value={{ favComments, removeFromFavComments }}
         >
-          <UserContext.Provider value={user}>
+          <UserContext.Provider value={{ user, setUser }}>
             <Route exact path="/" component={Landing} />
             <Route exact path="/edit" component={EditUser} />
-            <Route exact path="/search" component={SearchBar} />
             {/* <PrivateRoute path="/dashboard" component={Dashboard} /> */}
             <Route exact path="/dashboard" component={Dashboard} />
           </UserContext.Provider>
