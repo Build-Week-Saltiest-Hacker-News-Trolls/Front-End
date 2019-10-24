@@ -8,8 +8,14 @@ import { Link } from "react-router-dom";
 import { Select } from "antd";
 
 const { Option } = Select;
+
+//  pass in comments through props
+export default function SearchBar({
+  comments,
+  setSearchedComments,
+  setSearchedTerm
+}) {
 // <========== pass in comments through props ============>
-export default function SearchBar({ comments }) {
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);
@@ -20,12 +26,6 @@ export default function SearchBar({ comments }) {
   const toggleUserView = e => {
     setUserView(!userView);
   };
-
-  console.log(
-    "userView then selectedUsername from searchbar",
-    userView,
-    selectedUsername
-  );
 
   //  Handle Favorites Icon Click
   const handleFavorite = e => {
@@ -74,6 +74,8 @@ export default function SearchBar({ comments }) {
       comment.username.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
+    setSearchedComments(results);
+    setSearchedTerm(searchTerm);
     console.log("Search Results", searchResults);
   }, [searchTerm]);
 
@@ -86,6 +88,7 @@ export default function SearchBar({ comments }) {
     // TODO:
     // form needs updated styling to match rest of overall dashboard design
     <>
+
       {userView ? (
         <FeedCardContainer key={selectedUsername}>
           <h3 onClick={toggleUserView}>X</h3>
@@ -105,6 +108,13 @@ export default function SearchBar({ comments }) {
                 placeholder="  Search by username"
                 onChange={handleChange}
               />
+            <label>
+            Sort:
+            <Select defaultValue="" onChange={orderSort}>
+              <Option value="1">Ascending</Option>
+              <Option value="2">Descending</Option>
+            </Select>
+          </label>
             </SearchForm>
           </section>
           <FeedCardContainer>

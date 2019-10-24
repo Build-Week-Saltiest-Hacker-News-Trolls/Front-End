@@ -43,7 +43,7 @@ const Graph = ({ comments }) => {
           <Statistic
             title="Overall Mood"
             value={
-              currentMood.positive * currentMood.negative > 0
+              currentMood.positive > currentMood.negative
                 ? "Positive"
                 : "Negative"
             }
@@ -63,7 +63,7 @@ const Graph = ({ comments }) => {
         </Col>
         <Col span={12} align="middle">
           <div>
-            <p>Negative</p>
+            <p>Salty</p>
             <Progress
               percent={Math.floor(currentMood.negative)}
               type="dashboard"

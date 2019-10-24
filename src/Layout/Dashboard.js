@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState, useContext } from "react";
 import { Route } from "react-router-dom";
 import Feed from "../components/Feed.js";
 import NavBar from "./NavBar.js";
@@ -12,11 +12,33 @@ import Footer from "./Footer.js";
 const Dashboard = props => {
   const { comments, addToFavComments } = useContext(CommentContext);
   const { favComments, removeFromFavComments } = useContext(FavCommentContext);
+  const [searchedComments, setSearchedComments] = useState([]);
+  const [searchedTerm, setSearchedTerm] = useState("");
+  const blankArray = [
+    {
+      positive: 0,
+      negative: 0
+    }
+  ];
+  const condition = () => {
+    if (searchedComments.length === 0 && searchedTerm !== "") {
+      return blankArray;
+    } else if (searchedComments.length !== 0) {
+      return searchedComments;
+    } else {
+      return comments;
+    }
+  };
+
   return (
     <>
       <NavBar />
-      <Graph comments={comments} />
-      <SearchBar comments={comments} />
+      <Graph comments={condition()} />
+      <SearchBar
+        comments={comments}
+        setSearchedComments={setSearchedComments}
+        setSearchedTerm={setSearchedTerm}
+      />
       <Footer />
     </>
   );

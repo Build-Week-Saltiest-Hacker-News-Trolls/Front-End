@@ -30,7 +30,7 @@ const FeedCardComponent = ({
     <>
       <FeedCard>
         <Row>
-          <Col span={9}>
+          <Col span={10}>
             <div
               style={{
                 display: "flex",
@@ -52,8 +52,8 @@ const FeedCardComponent = ({
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(positive) > Math.abs(negative)
-                    ? positive
-                    : negative}
+                    ? positive * 100 + "%"
+                    : negative * 100 + "%"}
                 </h3>
                 <strong>
                   {Math.abs(positive) > Math.abs(negative)
@@ -64,7 +64,7 @@ const FeedCardComponent = ({
             </div>
           </Col>
 
-          <Col span={13}>
+          <Col span={14}>
             <div
               style={{
                 display: "flex",
