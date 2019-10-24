@@ -1,6 +1,7 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { UserContext } from "../Context/UserContext";
 
 import {
   EditHeader,
@@ -12,21 +13,23 @@ import {
   SignFormContainer
 } from "../theme/Styled.js";
 
-export default function EditUser() {
-  const [credentials, setCredentials] = useState({
-    username: "",
-    password: "",
-    email: "",
+export default function EditUser(props) {
+  const { user, setUser } = useContext(UserContext);
+
+  const [updatedUser, setUpdatedUser] = useState({
+    username: user.username,
+    password: user.password,
+    email: user.email
   });
 
   const handleChange = e => {
-    setCredentials({ ...credentials, [e.target.name]: e.target.value });
+    setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value });
   };
 
-  // TODO: Add Save Button Functionality 
+  // TODO: Add Save Button Functionality
   const handleSave = e => {
     e.preventDefault();
-    setCredentials({ username: "", password: "", email: ""});
+    setUser(updatedUser);
   };
 
   const handleCancel = e => {
@@ -36,12 +39,12 @@ export default function EditUser() {
   return (
     <SignFormContainer>
       <Logo />
-      <EditHeader>Edit Profile Details</EditHeader>      
+      <EditHeader>Edit Profile Details</EditHeader>
       <SignForm>
         <InputContainer>
           <SignInput1
             id="username"
-            value={credentials.username}
+            value={updatedUser.username}
             name="username"
             type="text"
             onChange={handleChange}
@@ -51,7 +54,7 @@ export default function EditUser() {
         <InputContainer>
           <SignInput2
             id="password"
-            value={credentials.password}
+            value={updatedUser.password}
             name="password"
             type="password"
             onChange={handleChange}
@@ -61,7 +64,7 @@ export default function EditUser() {
         <InputContainer>
           <SignInput2
             id="email"
-            value={credentials.email}
+            value={updatedUser.email}
             name="email"
             type="email"
             onChange={handleChange}
@@ -69,16 +72,12 @@ export default function EditUser() {
           />
         </InputContainer>
         <Link to="/dashboard">
-          <UMBButton onClick={handleSave}>
-            Save Changes
-          </UMBButton>
+          <UMBButton onClick={handleSave}>Save Changes</UMBButton>
         </Link>
         <Link to="/dashboard">
-          <UMBButton onClick={handleCancel}>
-            Cancel 
-          </UMBButton>
-        </Link>        
+          <UMBButton>Cancel</UMBButton>
+        </Link>
       </SignForm>
     </SignFormContainer>
-  )
+  );
 }

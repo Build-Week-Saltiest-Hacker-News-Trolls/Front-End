@@ -38,7 +38,7 @@ const Graph = ({ comments }) => {
           <Statistic
             title="Total Comments"
             value={comments.length}
-            prefix={<Icon type="number" />}
+            prefix={<Icon type="unordered-list" />}
           />
         </Col>
         <Col span={12} align="middle">
@@ -73,11 +73,6 @@ const Graph = ({ comments }) => {
               strokeColor="red"
             />
           </div>
-          <Select defaultValue="0">
-            <Option value="1">1</Option>
-            <Option value="2">2</Option>
-            <Option value="3">3</Option>
-          </Select>
         </Col>
       </Row>
     </Row>
