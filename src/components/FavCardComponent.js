@@ -3,6 +3,7 @@ import { FeedCard } from "../theme/Styled.js";
 
 import { Row, Col, Icon } from "antd";
 
+// TODO: link to search bar and send in props
 export default function FavCardComponent(props) {
   const {
     id,
