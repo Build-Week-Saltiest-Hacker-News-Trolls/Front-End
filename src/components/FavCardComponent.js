@@ -1,12 +1,9 @@
-import React, { useState } from "react";
+import React from "react";
 import { FeedCard } from "../theme/Styled.js";
+
 import { Row, Col, Icon } from "antd";
 
-const FeedCardComponent = ({
-  setSelectedUsername,
-  commentItem,
-  toggleUserView
-}) => {
+export default function FavCardComponent(props) {
   const {
     id,
     username,
@@ -15,22 +12,32 @@ const FeedCardComponent = ({
     negative,
     neutral,
     comment
-  } = commentItem;
+  } = props.comment;
 
-  const toggleClickHandler = e => {
-    toggleUserView();
-    setSelectedUsername(username);
-    console.log("event from click handler", e);
-  };
-  // console.log("toggleUserView from feedCard", toggleUserView);
+  console.log(username);
+  console.log("props from feedcard.js", props);
 
-  // console.log(username);
-  // console.log("props from feedcard.js", props);
   return (
     <>
       <FeedCard>
+        <Icon
+          type="heart"
+          theme="twoTone"
+          twoToneColor="rgba(204, 41, 54, 1)"
+        />
+        <button
+          className="-remove-fav-icon"
+          onClick={props.removeFromFavComments(comment)}
+        >
+          <Icon
+            type="delete"
+            theme="twoTone"
+            twoToneColor="rgba(204, 41, 54, 1)"
+          />
+          <strong>Remove from Favorites</strong>
+        </button>
         <Row>
-          <Col span={10}>
+          <Col span={9}>
             <div
               style={{
                 display: "flex",
@@ -39,21 +46,15 @@ const FeedCardComponent = ({
                 height: "230px"
               }}
             >
-              <div className="leftTop">
-                <strong
-                  onClick={toggleClickHandler}
-                  style={{ fontSize: "1.15rem" }}
-                >
-                  {username}
-                </strong>
-
+              <div classname="leftTop">
+                <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
                 <p>{commentDate}</p>
               </div>
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(positive) > Math.abs(negative)
-                    ? positive * 100 + "%"
-                    : negative * 100 + "%"}
+                    ? positive
+                    : negative}
                 </h3>
                 <strong>
                   {Math.abs(positive) > Math.abs(negative)
@@ -64,7 +65,7 @@ const FeedCardComponent = ({
             </div>
           </Col>
 
-          <Col span={14}>
+          <Col span={13}>
             <div
               style={{
                 display: "flex",
@@ -75,25 +76,10 @@ const FeedCardComponent = ({
             >
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
               <p>{comment}</p>
-              <div>
-                <button
-                  className="fav-icon"
-                  // onClick={props.addToFavCommentsList(comment)}
-                >
-                  <Icon
-                    type="heart"
-                    theme="twoTone"
-                    twoToneColor="rgba(204, 41, 54, 1)"
-                  />
-                  <strong>Add to Favorites</strong>
-                </button>
-              </div>
             </div>
           </Col>
         </Row>
       </FeedCard>
     </>
   );
-};
-
-export default FeedCardComponent;
+}
