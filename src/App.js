@@ -5,6 +5,7 @@ import SignUp from "./SignInLayout/SignUp";
 import EditUser from "./components/EditUser.js";
 import SearchBar from "./components/SearchBar";
 import PrivateRoute from "./components/PrivateRoute.js";
+import FeedCardDetails from "./components/FeedCardDetails";
 import Landing from "./Layout/Landing.js";
 import Dashboard from "./Layout/Dashboard.js";
 import { CommentContext } from "./Context/CommentContext.js";

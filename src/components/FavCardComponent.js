@@ -1,6 +1,6 @@
-import React from 'react';
+import React from "react";
 import { FeedCard } from "../theme/Styled.js";
-import "../scss/FeedCard.scss";
+
 import { Row, Col, Icon } from "antd";
 
 // TODO: link to search bar and send in props
@@ -21,14 +21,17 @@ export default function FavCardComponent(props) {
   return (
     <>
       <FeedCard>
-        <Icon  
-          type="heart" 
+        <Icon
+          type="heart"
           theme="twoTone"
-          twoToneColor="rgba(204, 41, 54, 1)" 
+          twoToneColor="rgba(204, 41, 54, 1)"
         />
-        <button className="-remove-fav-icon" onClick={props.removeFromFavComments(comment)}>
-          <Icon  
-            type="delete" 
+        <button
+          className="-remove-fav-icon"
+          onClick={props.removeFromFavComments(comment)}
+        >
+          <Icon
+            type="delete"
             theme="twoTone"
             twoToneColor="rgba(204, 41, 54, 1)"
           />

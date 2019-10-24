@@ -3,7 +3,7 @@ export const fakeCommentData = [
     id: 0,
     username: "Martin",
     commentDate: "01/15/2020",
-    positive: 0.8,
+    positive: 0.00008,
     negative: -0.113,
     neutral: 0,
     comment:
@@ -11,9 +11,9 @@ export const fakeCommentData = [
   },
   {
     id: 1,
-    username: "Karthik",
+    username: "Martin",
     commentDate: "06/01/2020",
-    positive: 0.74,
+    positive: 0.001,
     negative: -0.46,
     neutral: -0.25,
     comment:
@@ -43,7 +43,7 @@ export const fakeCommentData = [
     id: 4,
     username: "Chris",
     commentDate: "01/03/2020",
-    positive: 0.84,
+    positive: 0.0084,
     negative: -0.86,
     neutral: 0.33,
     comment:

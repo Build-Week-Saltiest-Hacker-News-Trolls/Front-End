@@ -1,32 +1,48 @@
 import React, { useState, useEffect, useContext } from "react";
 import { FavCommentContext } from "../Context/FavCommentContext.js";
 import FeedCardComponent from "./FeedCardComponent.js";
-import { FeedCardContainer } from "../theme/Styled.js";
-import { SearchForm } from "../theme/Styled.js";
+
+
+import FeedCardDetails from "./FeedCardDetails.js";
+import { SearchForm, FeedCardContainer } from "../theme/Styled.js";
+import { Link } from "react-router-dom";
+
 import { Select } from "antd";
 
 const { Option } = Select;
 
-//  pass in comments through props 
-export default function SearchBar({ comments }) {
+//  pass in comments through props
+export default function SearchBar({
+  comments,
+  setSearchedComments,
+  setSearchedTerm
+}) {
+// <========== pass in comments through props ============>
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
+  const [userView, setUserView] = useState(false);
+  const [selectedUsername, setSelectedUsername] = useState("");
   const [filter, setFilter] = useState({ order: "", sentiment: "" });
   const { favCommentsList, setFavCommentsList } = useContext(FavCommentContext);
-  
 
-  const addToFavCommentsList = comment => {
-    // setFavCommentsList( [...favCommentsList, comment] ); <--returns favCommentList not iterable
+  const toggleUserView = e => {
+    setUserView(!userView);
   };
 
-  //  Handle Favorites Icon Click 
-  const handleFavorite = (e) => {
+  //  Handle Favorites Icon Click
+  const handleFavorite = e => {
     // e.preventDefault();
     // addFavComments(e.target.id);
-  console.log("Favorte Pressed!", "Target Id: ", e, "Favorite Comments: ", favCommentsList);
-  }
+    console.log(
+      "Favorte Pressed!",
+      "Target Id: ",
+      e,
+      "Favorite Comments: ",
+      favCommentsList
+    );
+  };
 
-  //  set search term state each keystoke 
+  //  set search term state each keystoke
   const handleChange = e => {
     setSearchTerm(e.target.value);
   };
@@ -60,6 +76,8 @@ export default function SearchBar({ comments }) {
       comment.username.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
+    setSearchedComments(results);
+    setSearchedTerm(searchTerm);
     console.log("Search Results", searchResults);
   }, [searchTerm]);
 
@@ -68,47 +86,56 @@ export default function SearchBar({ comments }) {
     return searchTerm === "" ? comments : searchResults;
   };
 
-  
   return (
     // TODO:
     // form needs updated styling to match rest of overall dashboard design
     <>
-      <section className="search-form">
-        {/* Styled Component */}
-        <SearchForm>
-          <input
-            size="large"
-            id="search"
-            value={searchTerm}
-            name="search"
-            type="text"
-            placeholder="  Search by username"
-            onChange={handleChange}
-          />
-          <label>
+
+      {userView ? (
+        <FeedCardContainer key={selectedUsername}>
+          <h3 onClick={toggleUserView}>X</h3>
+          <FeedCardDetails selectedUsername={selectedUsername} />
+        </FeedCardContainer>
+      ) : (
+        <>
+          <section className="search-form">
+            {/* Styled Component */}
+            <SearchForm>
+              <input
+                size="large"
+                id="search"
+                value={searchTerm}
+                name="search"
+                type="text"
+                placeholder="  Search by username"
+                onChange={handleChange}
+              />
+            <label>
             Sort:
             <Select defaultValue="" onChange={orderSort}>
               <Option value="1">Ascending</Option>
               <Option value="2">Descending</Option>
             </Select>
           </label>
-        </SearchForm>
-      </section>
-      <FeedCardContainer>
-        {/* Map over comment list or filtered comments or null */}
-        {searchResults.length !== 0 ? (
-          conditionalRender().map(item => (
-            <FeedCardComponent 
-              key={item.id} 
-              comment={item} 
-              handleFavorite={handleFavorite}
-              addToFavCommentsList={addToFavCommentsList}
-            />
-          ))
-        ) : (
-          <div>User Not Found</div>
-        )}
-      </FeedCardContainer>
+            </SearchForm>
+          </section>
+          <FeedCardContainer>
+            {/* Map over comment list or filtered comments or null */}
+            {searchResults.length !== 0 ? (
+              conditionalRender().map(item => (
+                <FeedCardComponent
+                  key={item.id}
+                  toggleUserView={toggleUserView}
+                  setSelectedUsername={setSelectedUsername}
+                  commentItem={item}
+                />
+              ))
+            ) : (
+              <div>User Not Found</div>
+            )}
+          </FeedCardContainer>
+        </>
+      )}
     </>
   );
 }
