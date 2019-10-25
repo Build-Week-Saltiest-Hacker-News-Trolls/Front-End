@@ -16,7 +16,7 @@ export default function SearchBar({
   setSearchedComments,
   setSearchedTerm
 }) {
-  // <========== pass in comments through props ============>
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);

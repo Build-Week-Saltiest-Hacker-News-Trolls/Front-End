@@ -69,7 +69,7 @@ export const FeedCard = styled.div`
 
 export const SearchForm = styled.form`
   border-bottom: none;
-  border: 3px solid silver;
+  border: 1px solid silver;
   border-radius: 10px;
   width: 50%;
   height: 50px;
@@ -126,4 +126,15 @@ export const FeedCardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+`;
+
+export const CardUsername = styled.div`
+    &:hover {
+      cursor: pointer;
+
+      strong {      
+        color: rgba(255, 114, 0, 1)
+      } 
+    }
+  }
 `;
