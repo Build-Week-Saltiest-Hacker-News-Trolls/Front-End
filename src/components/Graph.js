@@ -14,10 +14,10 @@ const Graph = ({ comments }) => {
       negative: 0
     };
     let positive = comments.map(comment => {
-      return (mood.positive += comment.positive);
+      return (mood.positive += comment.pos);
     });
     let negative = comments.map(comment => {
-      return (mood.negative += comment.negative);
+      return (mood.negative += comment.neg);
     });
 
     const positiveAggregate = mood.positive / comments.length;

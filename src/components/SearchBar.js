@@ -20,7 +20,7 @@ export default function SearchBar({
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);
-  const [selectedUsername, setSelectedUsername] = useState("");
+  const [selectedauthor, setSelectedauthor] = useState("");
   const [filter, setFilter] = useState({ order: "", sentiment: "" });
   const { favCommentsList, setFavCommentsList } = useContext(FavCommentContext);
 
@@ -72,7 +72,7 @@ export default function SearchBar({
   // search filter function - runs each time seach value changes
   useEffect(() => {
     const results = comments.filter(comment =>
-      comment.username.toLowerCase().includes(searchTerm)
+      comment.author.toLowerCase().includes(searchTerm)
     );
     setSearchResults(results);
     setSearchedComments(results);
@@ -90,9 +90,9 @@ export default function SearchBar({
     // form needs updated styling to match rest of overall dashboard design
     <>
       {userView ? (
-        <FeedCardContainer key={selectedUsername}>
+        <FeedCardContainer key={selectedauthor}>
           <h3 onClick={toggleUserView}>X</h3>
-          <FeedCardDetails selectedUsername={selectedUsername} />
+          <FeedCardDetails selectedauthor={selectedauthor} />
         </FeedCardContainer>
       ) : (
         <>
@@ -105,7 +105,7 @@ export default function SearchBar({
                 value={searchTerm}
                 name="search"
                 type="text"
-                placeholder="  Search by username"
+                placeholder="  Search by author"
                 onChange={handleChange}
               />
               <label>
@@ -124,7 +124,7 @@ export default function SearchBar({
                 <FeedCardComponent
                   key={item.id}
                   toggleUserView={toggleUserView}
-                  setSelectedUsername={setSelectedUsername}
+                  setSelectedauthor={setSelectedauthor}
                   commentItem={item}
                 />
               ))

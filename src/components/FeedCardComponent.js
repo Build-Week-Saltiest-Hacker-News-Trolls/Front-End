@@ -9,17 +9,17 @@ const FeedCardComponent = ({
 }) => {
   const {
     id,
-    username,
-    commentDate,
-    positive,
-    negative,
-    neutral,
-    comment
+    author,
+    original_comment_time,
+    pos,
+    neg,
+    neu,
+    comment_text
   } = commentItem;
 
   const toggleClickHandler = e => {
     toggleUserView();
-    setSelectedUsername(username);
+    setSelectedUsername(author);
     console.log("event from click handler", e);
   };
   // console.log("toggleUserView from feedCard", toggleUserView);
@@ -44,21 +44,19 @@ const FeedCardComponent = ({
                   onClick={toggleClickHandler}
                   style={{ fontSize: "1.15rem" }}
                 >
-                  {username}
+                  {author}
                 </strong>
 
-                <p>{commentDate}</p>
+                <p>{original_comment_time}</p>
               </div>
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
-                  {Math.abs(positive) > Math.abs(negative)
-                    ? positive * 100 + "%"
-                    : negative * 100 + "%"}
+                  {Math.abs(pos) > Math.abs(neg)
+                    ? pos * 100 + "%"
+                    : neg * 100 + "%"}
                 </h3>
                 <strong>
-                  {Math.abs(positive) > Math.abs(negative)
-                    ? "Positive"
-                    : "Salty"}
+                  {Math.abs(pos) > Math.abs(neg) ? "Positive" : "Salty"}
                 </strong>
               </div>
             </div>
@@ -74,7 +72,7 @@ const FeedCardComponent = ({
               }}
             >
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
-              <p>{comment}</p>
+              <p>{comment_text}</p>
               <div>
                 <button
                   className="fav-icon"
