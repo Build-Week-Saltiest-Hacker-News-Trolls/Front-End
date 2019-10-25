@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
-import { FootSpan, Outer, Inner } from '../theme/Styled.js';
+import { FootSpan, Outer, Inner, Copy } from '../theme/Styled.js';
 
 export default function Footer() {
   return (
@@ -14,10 +14,13 @@ export default function Footer() {
             </FootSpan>
           </div>
           <Inner>
-            <span>Content</span>
-            <span>Footer Placeholder</span>
-        </Inner>
+            <a href="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/index.html">Marketing Page</a>
+            <a href="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/about.html">About Us</a>
+          </Inner>          
       </Outer>
+      <Copy>
+        <p>© Copyright 2019 D'Salty Dogs of LS</p>
+      </Copy>
     </>
   );
 }
