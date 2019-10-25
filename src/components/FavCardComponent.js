@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
 import { FeedCard } from "../theme/Styled.js";
+import { FavCommentContext } from "../Context/FavCommentContext";
 
 import { Row, Col, Icon } from "antd";
 
@@ -18,25 +19,18 @@ export default function FavCardComponent(props) {
   console.log(username);
   console.log("props from feedcard.js", props);
 
+  const { removeFromFavComments } = useContext(FavCommentContext);
+
   return (
     <>
       <FeedCard>
-        <Icon
-          type="heart"
-          theme="twoTone"
-          twoToneColor="rgba(204, 41, 54, 1)"
-        />
-        {/* <button
-          className="-remove-fav-icon"
-          onClick={props.removeFromFavComments(comment)}
-        > */}
-        {/* <Icon
-            type="delete"
-            theme="twoTone"
-            twoToneColor="rgba(204, 41, 54, 1)"
-          />
-          <strong>Remove from Favorites</strong>
-        </button> */}
+        <div
+          onClick={() => {
+            removeFromFavComments(id);
+          }}
+        >
+          <Icon type="close" />
+        </div>
         <Row>
           <Col span={9}>
             <div
