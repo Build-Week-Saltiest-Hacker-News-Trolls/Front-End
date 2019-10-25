@@ -33,7 +33,7 @@ const Graph = ({ comments }) => {
   }, [comments]);
 
   return (
-    <Row style={{ marginTop: "20px" }}>
+    <Row style={{ padding: "20px", background: "#F7F7F7" }}>
       <Row gutter={[48, 48]}>
         <Col span={12} align="middle">
           <Statistic

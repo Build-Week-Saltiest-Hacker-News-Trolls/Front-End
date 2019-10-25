@@ -1,6 +1,9 @@
-import React, { useState } from "react";
-import { FeedCard } from "../theme/Styled.js";
-import { Row, Col, Icon } from "antd";
+
+import React, { useState, useContext } from "react";
+import { FeedCard, CardUsername } from "../theme/Styled.js";
+import { Row, Col, Icon, Popover } from "antd";
+import { CommentContext } from "../Context/CommentContext";
+
 
 const FeedCardComponent = ({
   setSelectedUsername,
@@ -16,6 +19,8 @@ const FeedCardComponent = ({
     neu,
     comment_text
   } = commentItem;
+
+  const { addToFavComments } = useContext(CommentContext);
 
   const toggleClickHandler = e => {
     toggleUserView();
@@ -39,16 +44,25 @@ const FeedCardComponent = ({
                 height: "230px"
               }}
             >
-              <div className="leftTop">
-                <strong
-                  onClick={toggleClickHandler}
-                  style={{ fontSize: "1.15rem" }}
-                >
-                  {author}
-                </strong>
 
-                <p>{original_comment_time}</p>
-              </div>
+              <Popover placement="leftTop" content={
+              <p>
+                See all comments by this user
+              </p>
+            }
+            >
+                <CardUsername className="leftTop">
+                  <strong
+                    onClick={toggleClickHandler}
+                    style={{ fontSize: "1.15rem" }}
+                  >
+                    {author}
+                  </strong>
+
+                  <p>{original_comment_time}</p>
+                </CardUsername>
+              </Popover>
+
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(pos) > Math.abs(neg)
@@ -76,7 +90,9 @@ const FeedCardComponent = ({
               <div>
                 <button
                   className="fav-icon"
-                  // onClick={props.addToFavCommentsList(comment)}
+                  onClick={() => {
+                    addToFavComments(commentItem);
+                  }}
                 >
                   <Icon
                     type="heart"

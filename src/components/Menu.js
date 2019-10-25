@@ -7,24 +7,22 @@ import "../scss/Menu.scss";
 import { Drawer, Icon } from "antd";
 
 const Menu = props => {
-  console.log("props from Menu.js", props);
-
   const closeDrawer = () => {
     props.setMenuState({
       drawer: !props.menuState.drawer
     });
   };
 
-  const openFavDrawer = () => {
-    props.setFavoritesDrawerState({
-      drawer: !props.favoritesDrawerState.drawer
-    });
-  };
+  // const openFavDrawer = () => {
+  //   props.setFavoritesDrawerState({
+  //     drawer: !props.favoritesDrawerState.drawer
+  //   });
+  // };
 
-  const favoritesClickHandler = () => {
-    closeDrawer();
-    openFavDrawer();
-  };
+  // const favoritesClickHandler = () => {
+  //   closeDrawer();
+  //   openFavDrawer();
+  // };
 
   return (
     <>
@@ -36,8 +34,8 @@ const Menu = props => {
         width="50%"
       >
         <div className="menu">
-          <NavLink to="/">Marketing Page</NavLink>
-          <NavLink to="/about">About the Team</NavLink>
+          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/index.html">Marketing Page</NavLink>
+          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/about.html">About the Team</NavLink>
           <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/edit">
             <span>Edit User Info</span>
@@ -46,10 +44,10 @@ const Menu = props => {
         <Link to="/">
           <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
         </Link>
-        <div className="favoriteDiv" onClick={favoritesClickHandler}>
+        {/* <div className="favoriteDiv" onClick={favoritesClickHandler}>
           <h5>Favorites </h5>
           <Icon type="heart" theme="filled" />
-        </div>
+        </div> */}
       </Drawer>
     </>
   );

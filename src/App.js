@@ -38,7 +38,6 @@ function App() {
   //comments context
 
   //fav comments context
-
   const [favComments, setFavComments] = useState([]);
 
   const addToFavComments = comment => {

@@ -16,8 +16,7 @@ export default function SearchBar({
   setSearchedComments,
   setSearchedTerm
 }) {
-  console.log("comments from searchbar", comments);
-  // <========== pass in comments through props ============>
+
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);
@@ -47,28 +46,42 @@ export default function SearchBar({
     setSearchTerm(e.target.value);
   };
 
-  //  filter by drop down selection
-  const orderSort = e => {
-    let sortedResults = [];
-    sortedResults = searchResults.sort(function(a, b) {
-      return e == "1" ? a - b : b - a; // 1 = ascending, else descending
-    });
-    setSearchResults(sortedResults);
-  };
-
-  const sentimentFilter = e => {
-    let filteredResults = [];
-    setSearchResults(filteredResults);
-  };
-
-  const handleSort = e => {
-    setFilter({ ...filter, [e.target.name]: e.target.value });
-  };
-
-  useEffect(() => {
-    orderSort(filter.order);
-    sentimentFilter();
-  }, [filter]);
+    //  filter by drop down selection
+    const orderSort = e => {
+      let s = filter.sentiment;
+      let sortedResults = e.sort(function(a,b) {
+        switch(filter.order) {
+          case "asc":
+            return s === "neu" ? asc(a.neutral, b.neutral) :
+                   s === "pos" ? asc(a.positive, b.positive) :
+                   s === "neg" ? asc(a.negative, b.negative) :
+                   asc(a.id, b.id)
+          case "desc":
+            return s === "neu" ? desc(a.neutral, b.neutral) :
+                   s === "pos" ? desc(a.positive, b.positive) :
+                   s === "neg" ? desc(a.negative, b.negative) :
+                   desc(a.id, b.id)
+        }
+      });
+      return sortedResults;
+    };
+  
+    const asc = (a,b) => {
+      return a-b
+    }
+  
+    const desc = (a,b) => {
+      return b-a
+    }
+  
+    const handleOrder = e => {
+      setFilter({...filter, order: e});
+    }
+  
+    const handleSentiment = e => {
+      setFilter({...filter, sentiment: e});
+    }
+  
 
   // search filter function - runs each time seach value changes
   useEffect(() => {
@@ -83,7 +96,7 @@ export default function SearchBar({
 
   // Render full comment list or searchResults(if any)
   const conditionalRender = () => {
-    return searchTerm === "" ? comments : searchResults;
+    return searchTerm === "" ? orderSort(comments) : orderSort(searchResults);
   };
 
   const conditionalMessage = () => {
@@ -114,10 +127,27 @@ export default function SearchBar({
                 onChange={handleChange}
               />
               <label>
-                Sort:
-                <Select defaultValue="" onChange={orderSort}>
-                  <Option value="1">Ascending</Option>
-                  <Option value="2">Descending</Option>
+                Sort Order:
+                <Select 
+                  name="order"
+                  defaultValue="asc"
+                  onChange={handleOrder.bind(this)}
+                >
+                  <Option value="asc">Ascending</Option>
+                  <Option value="desc">Descending</Option>
+                </Select>
+              </label>
+              <label>
+                Filter By:
+                <Select 
+                  name="filter"
+                  defaultValue="nil"
+                  onChange={handleSentiment.bind(this)}
+                >
+                  <Option value="nil"></Option>
+                  <Option value="neu">Neutrality</Option>
+                  <Option value="pos">Positivity</Option>
+                  <Option value="neg">Negativity</Option>
                 </Select>
               </label>
             </SearchForm>
