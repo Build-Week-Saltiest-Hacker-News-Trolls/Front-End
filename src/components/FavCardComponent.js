@@ -13,7 +13,7 @@ export default function FavCardComponent(props) {
     negative,
     neutral,
     comment
-  } = props.comment;
+  } = props.commentItem;
 
   console.log(username);
   console.log("props from feedcard.js", props);
@@ -26,17 +26,17 @@ export default function FavCardComponent(props) {
           theme="twoTone"
           twoToneColor="rgba(204, 41, 54, 1)"
         />
-        <button
+        {/* <button
           className="-remove-fav-icon"
           onClick={props.removeFromFavComments(comment)}
-        >
-          <Icon
+        > */}
+        {/* <Icon
             type="delete"
             theme="twoTone"
             twoToneColor="rgba(204, 41, 54, 1)"
           />
           <strong>Remove from Favorites</strong>
-        </button>
+        </button> */}
         <Row>
           <Col span={9}>
             <div

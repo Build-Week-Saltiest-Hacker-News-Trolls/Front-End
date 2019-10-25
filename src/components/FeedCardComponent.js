@@ -1,6 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import { FeedCard } from "../theme/Styled.js";
 import { Row, Col, Icon } from "antd";
+import { CommentContext } from "../Context/CommentContext";
 
 const FeedCardComponent = ({
   setSelectedUsername,
@@ -16,6 +17,8 @@ const FeedCardComponent = ({
     neutral,
     comment
   } = commentItem;
+
+  const { addToFavComments } = useContext(CommentContext);
 
   const toggleClickHandler = e => {
     toggleUserView();
@@ -78,7 +81,9 @@ const FeedCardComponent = ({
               <div>
                 <button
                   className="fav-icon"
-                  // onClick={props.addToFavCommentsList(comment)}
+                  onClick={() => {
+                    addToFavComments(commentItem);
+                  }}
                 >
                   <Icon
                     type="heart"

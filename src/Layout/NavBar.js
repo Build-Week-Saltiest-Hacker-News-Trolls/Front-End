@@ -13,7 +13,7 @@ const NavBar = () => {
   const [menuState, setMenuState] = useState({
     drawer: false
   });
-  const [favoritesDrawerState, setFavoritesDrawerState] = useState({
+  const [favoriteDrawerState, setFavoriteDrawerState] = useState({
     drawer: false
   });
 
@@ -23,6 +23,10 @@ const NavBar = () => {
     setMenuState({ drawer: !menuState.drawer });
   };
 
+  const showFavorites = () => {
+    setFavoriteDrawerState({ drawer: !favoriteDrawerState.drawer });
+  };
+
   return (
     <div className="navbarContainer">
       <div id="Navbar">
@@ -30,30 +34,18 @@ const NavBar = () => {
           <Logo />
         </Link>
         <div>
-          <Popover
-            content={
-              <p>
-                User account will <br /> live here eventually
-              </p>
-            }
-            title={user.username}
-          >
-            <Avatar style={{ backgroundColor: "orange", marginRight: "25px" }}>
+          <Avatar style={{ backgroundColor: "orange", marginRight: "25px" }}>
+            <div onClick={showFavorites}>
               {user.username.charAt(0).toUpperCase()}
-            </Avatar>
-          </Popover>
+            </div>
+          </Avatar>
           <Icon type="menu" onClick={openDrawer} />
           {/* Drawer Menu */}
         </div>
-        <Menu
-          setMenuState={setMenuState}
-          menuState={menuState}
-          favoritesDrawerState={favoritesDrawerState}
-          setFavoritesDrawerState={setFavoritesDrawerState}
-        />
+        <Menu setMenuState={setMenuState} menuState={menuState} />
         <FavoritesDrawer
-          favoritesDrawerState={favoritesDrawerState}
-          setFavoritesDrawerState={setFavoritesDrawerState}
+          favoriteDrawerState={favoriteDrawerState}
+          setFavoriteDrawerState={setFavoriteDrawerState}
         />
       </div>
     </div>
