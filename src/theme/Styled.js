@@ -69,7 +69,7 @@ export const FeedCard = styled.div`
 
 export const SearchForm = styled.form`
   border-bottom: none;
-  border: 3px solid silver;
+  border: 1px solid silver;
   border-radius: 10px;
   width: 50%;
   height: 50px;
