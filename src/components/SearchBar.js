@@ -33,46 +33,49 @@ export default function SearchBar({ comments }) {
 
   //  filter by drop down selection
   const orderSort = e => {
-    sortedResults = e.sort(function(a, b) {
-      switch(filter.sentiment) {
-        case "0":
-          break;
-        case "1":
-          a = a.comment.neutral;
-          b = b.comment.neutral;
-          break;
-        case "2":
-          a = a.comment.positive;
-          b = b.comment.positive;
-          break;
-        case "3":
-          a = a.comment.negative;
-          b = b.comment.negative;
-          break;
-      }
-      switch(filter.order){
-        case "0":
-          return null
-        case "1":
-          return a-b
-        case "2":
-          return b-a
+    let s = filter.sentiment;
+    let sortedResults = e.sort(function(a,b) {
+      switch(filter.order) {
+        case "asc":
+          return s === "neu" ? asc(a.neutral, b.neutral) :
+                 s === "pos" ? asc(a.positive, b.positive) :
+                 s === "neg" ? asc(a.negative, b.negative) :
+                 asc(a.id, b.id)
+        case "desc":
+          return s === "neu" ? desc(a.neutral, b.neutral) :
+                 s === "pos" ? desc(a.positive, b.positive) :
+                 s === "neg" ? desc(a.negative, b.negative) :
+                 desc(a.id, b.id)
       }
     });
     return sortedResults;
   };
 
-  const handleSortFilter = e => {
-    setFilter({ ...filter, [e.target.name]: e.target.value });
-  };
+  const asc = (a,b) => {
+    return a-b
+  }
+
+  const desc = (a,b) => {
+    return b-a
+  }
+
+  const handleOrder = e => {
+    setFilter({...filter, order: e});
+  }
+
+  const handleSentiment = e => {
+    setFilter({...filter, sentiment: e});
+  }
 
   // search filter function - runs each time seach value changes
   useEffect(() => {
     const results = comments.filter(comment =>
       comment.username.toLowerCase().includes(searchTerm)
     );
-    results = orderSort(results);
-    setSearchResults(results);
+    console.log("Order Sort: ");
+    console.log(orderSort(results));
+    setSearchResults(orderSort(results));
+    console.log("Filter State", filter);
     console.log("Search Results", searchResults);
   }, [searchTerm, filter]);
 
@@ -102,23 +105,24 @@ export default function SearchBar({ comments }) {
             Sort Order:
             <Select 
               name="order"
-              defaultValue="0"
-              onChange={handleSortFilter(value)}
+              defaultValue="asc"
+              onChange={handleOrder.bind(this)}
             >
-              <Option value="1">Ascending</Option>
-              <Option value="2">Descending</Option>
+              <Option value="asc">Ascending</Option>
+              <Option value="desc">Descending</Option>
             </Select>
           </label>
           <label>
             Filter By:
             <Select 
               name="filter"
-              defaultValue="0"
-              onChange={handleSortFilter(value)}
+              defaultValue="nil"
+              onChange={handleSentiment.bind(this)}
             >
-              <Option value="1">Neutrality</Option>
-              <Option value="2">Positivity</Option>
-              <Option value="3">Negativity</Option>
+              <Option value="nil"></Option>
+              <Option value="neu">Neutrality</Option>
+              <Option value="pos">Positivity</Option>
+              <Option value="neg">Negativity</Option>
             </Select>
           </label>
         </SearchForm>
