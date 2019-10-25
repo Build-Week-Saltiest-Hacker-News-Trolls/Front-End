@@ -16,11 +16,11 @@ export default function SearchBar({
   setSearchedComments,
   setSearchedTerm
 }) {
-
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);
-  const [selectedauthor, setSelectedauthor] = useState("");
+  const [selectedAuthorId, setSelectedAuthorId] = useState("");
+  const [filteredComments, setFilteredComments] = useState(comments);
   const [filter, setFilter] = useState({ order: "", sentiment: "" });
   const { favCommentsList, setFavCommentsList } = useContext(FavCommentContext);
 
@@ -41,47 +41,60 @@ export default function SearchBar({
     );
   };
 
+  useEffect(() => {
+    setFilteredComments(
+      comments.filter(comment => {
+        return comment.id == selectedAuthorId;
+      })
+    );
+  }, [selectedAuthorId]);
+
   //  set search term state each keystoke
   const handleChange = e => {
     setSearchTerm(e.target.value);
   };
 
-    //  filter by drop down selection
-    const orderSort = e => {
-      let s = filter.sentiment;
-      let sortedResults = e.sort(function(a,b) {
-        switch(filter.order) {
-          case "asc":
-            return s === "neu" ? asc(a.neutral, b.neutral) :
-                   s === "pos" ? asc(a.positive, b.positive) :
-                   s === "neg" ? asc(a.negative, b.negative) :
-                   asc(a.id, b.id)
-          case "desc":
-            return s === "neu" ? desc(a.neutral, b.neutral) :
-                   s === "pos" ? desc(a.positive, b.positive) :
-                   s === "neg" ? desc(a.negative, b.negative) :
-                   desc(a.id, b.id)
-        }
-      });
-      return sortedResults;
-    };
-  
-    const asc = (a,b) => {
-      return a-b
-    }
-  
-    const desc = (a,b) => {
-      return b-a
-    }
-  
-    const handleOrder = e => {
-      setFilter({...filter, order: e});
-    }
-  
-    const handleSentiment = e => {
-      setFilter({...filter, sentiment: e});
-    }
-  
+  //  filter by drop down selection
+  const orderSort = e => {
+    let s = filter.sentiment;
+    let sortedResults = e.sort(function(a, b) {
+      switch (filter.order) {
+        case "asc":
+          return s === "neu"
+            ? asc(a.neutral, b.neutral)
+            : s === "pos"
+            ? asc(a.positive, b.positive)
+            : s === "neg"
+            ? asc(a.negative, b.negative)
+            : asc(a.id, b.id);
+        case "desc":
+          return s === "neu"
+            ? desc(a.neutral, b.neutral)
+            : s === "pos"
+            ? desc(a.positive, b.positive)
+            : s === "neg"
+            ? desc(a.negative, b.negative)
+            : desc(a.id, b.id);
+      }
+    });
+    return sortedResults;
+  };
+
+  const asc = (a, b) => {
+    return a - b;
+  };
+
+  const desc = (a, b) => {
+    return b - a;
+  };
+
+  const handleOrder = e => {
+    setFilter({ ...filter, order: e });
+  };
+
+  const handleSentiment = e => {
+    setFilter({ ...filter, sentiment: e });
+  };
 
   // search filter function - runs each time seach value changes
   useEffect(() => {
@@ -108,9 +121,14 @@ export default function SearchBar({
     // form needs updated styling to match rest of overall dashboard design
     <>
       {userView ? (
-        <FeedCardContainer key={selectedauthor}>
+        <FeedCardContainer key={selectedAuthorId}>
           <h3 onClick={toggleUserView}>X</h3>
-          <FeedCardDetails selectedauthor={selectedauthor} />
+          {filteredComments.map(comment => (
+            <FeedCardDetails
+              selectedAuthorId={selectedAuthorId}
+              comment={comment}
+            />
+          ))}
         </FeedCardContainer>
       ) : (
         <>
@@ -128,7 +146,7 @@ export default function SearchBar({
               />
               <label>
                 Sort Order:
-                <Select 
+                <Select
                   name="order"
                   defaultValue="asc"
                   onChange={handleOrder.bind(this)}
@@ -139,7 +157,7 @@ export default function SearchBar({
               </label>
               <label>
                 Filter By:
-                <Select 
+                <Select
                   name="filter"
                   defaultValue="nil"
                   onChange={handleSentiment.bind(this)}
@@ -160,7 +178,7 @@ export default function SearchBar({
                 <FeedCardComponent
                   key={item.id}
                   toggleUserView={toggleUserView}
-                  setSelectedauthor={setSelectedauthor}
+                  setSelectedAuthorId={setSelectedAuthorId}
                   commentItem={item}
                 />
               ))
