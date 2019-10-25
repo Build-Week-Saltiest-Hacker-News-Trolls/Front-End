@@ -16,6 +16,7 @@ export default function SearchBar({
   setSearchedComments,
   setSearchedTerm
 }) {
+  console.log("comments from searchbar", comments);
   // <========== pass in comments through props ============>
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
@@ -85,6 +86,10 @@ export default function SearchBar({
     return searchTerm === "" ? comments : searchResults;
   };
 
+  const conditionalMessage = () => {
+    return searchTerm === "" ? "Loading Comments" : "User Not Found";
+  };
+
   return (
     // TODO:
     // form needs updated styling to match rest of overall dashboard design
@@ -119,7 +124,8 @@ export default function SearchBar({
           </section>
           <FeedCardContainer>
             {/* Map over comment list or filtered comments or null */}
-            {searchResults.length !== 0 ? (
+
+            {conditionalRender().length !== 0 ? (
               conditionalRender().map(item => (
                 <FeedCardComponent
                   key={item.id}
@@ -129,7 +135,7 @@ export default function SearchBar({
                 />
               ))
             ) : (
-              <div>User Not Found</div>
+              <h3>{conditionalMessage()}</h3>
             )}
           </FeedCardContainer>
         </>
