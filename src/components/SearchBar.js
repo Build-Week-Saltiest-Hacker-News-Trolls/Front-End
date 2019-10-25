@@ -72,16 +72,14 @@ export default function SearchBar({ comments }) {
     const results = comments.filter(comment =>
       comment.username.toLowerCase().includes(searchTerm)
     );
-    console.log("Order Sort: ");
-    console.log(orderSort(results));
-    setSearchResults(orderSort(results));
+    setSearchResults(results);
     console.log("Filter State", filter);
     console.log("Search Results", searchResults);
   }, [searchTerm, filter]);
 
   // Render full comment list or searchResults(if any)
   const conditionalRender = () => {
-    return searchTerm === "" ? comments : searchResults;
+    return searchTerm === "" ? orderSort(comments) : orderSort(searchResults);
   };
 
   
