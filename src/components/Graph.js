@@ -8,6 +8,9 @@ const Graph = ({ comments }) => {
     negative: 0
   });
 
+  console.log("comments from graph.js", comments);
+  console.log("currentMood from graph.js", currentMood);
+
   useEffect(() => {
     let mood = {
       positive: 0,
@@ -25,7 +28,7 @@ const Graph = ({ comments }) => {
     console.log(positiveAggregate, negativeAggregate);
     setCurrentMood({
       positive: positiveAggregate * 100,
-      negative: negativeAggregate * -100
+      negative: negativeAggregate * 100
     });
   }, [comments]);
 
