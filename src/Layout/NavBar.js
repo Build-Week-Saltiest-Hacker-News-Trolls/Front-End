@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Logo from "../components/Logo.js";
 import Menu from "../components/Menu.js";
+import FavoritesDrawer from "../components/FavoritesDrawer.js";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 
@@ -12,11 +13,18 @@ const NavBar = () => {
   const [menuState, setMenuState] = useState({
     drawer: false
   });
+  const [favoriteDrawerState, setFavoriteDrawerState] = useState({
+    drawer: false
+  });
 
   const { user } = useContext(UserContext);
 
   const openDrawer = () => {
     setMenuState({ drawer: !menuState.drawer });
+  };
+
+  const showFavorites = () => {
+    setFavoriteDrawerState({ drawer: !favoriteDrawerState.drawer });
   };
 
   return (
@@ -26,22 +34,19 @@ const NavBar = () => {
           <Logo />
         </Link>
         <div>
-          <Popover
-            content={
-              <p>
-                User account will <br /> live here eventually
-              </p>
-            }
-            title={user.username}
-          >
-            <Avatar style={{ backgroundColor: "orange", marginRight: "25px" }}>
+          <Avatar style={{ backgroundColor: "orange", marginRight: "25px" }}>
+            <div onClick={showFavorites}>
               {user.username.charAt(0).toUpperCase()}
-            </Avatar>
-          </Popover>
+            </div>
+          </Avatar>
           <Icon type="menu" onClick={openDrawer} />
           {/* Drawer Menu */}
         </div>
         <Menu setMenuState={setMenuState} menuState={menuState} />
+        <FavoritesDrawer
+          favoriteDrawerState={favoriteDrawerState}
+          setFavoriteDrawerState={setFavoriteDrawerState}
+        />
       </div>
     </div>
   );
