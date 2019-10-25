@@ -1,6 +1,6 @@
 import React, { useState } from "react";
-import { FeedCard } from "../theme/Styled.js";
-import { Row, Col, Icon } from "antd";
+import { FeedCard, CardUsername } from "../theme/Styled.js";
+import { Row, Col, Icon, Popover } from "antd";
 
 const FeedCardComponent = ({
   setSelectedUsername,
@@ -39,16 +39,23 @@ const FeedCardComponent = ({
                 height: "230px"
               }}
             >
-              <div className="leftTop">
-                <strong
-                  onClick={toggleClickHandler}
-                  style={{ fontSize: "1.15rem" }}
-                >
-                  {username}
-                </strong>
+              <Popover placement="leftTop" content={
+              <p>
+                See all comments by this user
+              </p>
+            }
+            >
+                <CardUsername className="leftTop">
+                  <strong
+                    onClick={toggleClickHandler}
+                    style={{ fontSize: "1.15rem" }}
+                  >
+                    {username}
+                  </strong>
 
-                <p>{commentDate}</p>
-              </div>
+                  <p>{commentDate}</p>
+                </CardUsername>
+              </Popover>
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(positive) > Math.abs(negative)

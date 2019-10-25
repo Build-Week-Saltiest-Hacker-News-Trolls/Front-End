@@ -108,3 +108,14 @@ export const FeedCardContainer = styled.div`
   justify-content: center;
   align-items: center;
 `;
+
+export const CardUsername = styled.div`
+    &:hover {
+      cursor: pointer;
+
+      strong {      
+        color: rgba(255, 114, 0, 1)
+      } 
+    }
+  }
+`;
