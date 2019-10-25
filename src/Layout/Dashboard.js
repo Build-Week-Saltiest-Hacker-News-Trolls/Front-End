@@ -16,6 +16,8 @@ const Dashboard = props => {
   const [searchedTerm, setSearchedTerm] = useState("");
   const [favoriteView, setFavoriteView] = useState(false);
 
+  console.log("comments from dashboard", comments);
+
   const toggleFavoriteView = () => {
     setFavoriteView(!favoriteView);
   };
@@ -31,8 +33,6 @@ const Dashboard = props => {
       return blankArray;
     } else if (searchedComments.length !== 0) {
       return searchedComments;
-    } else if (favoriteView) {
-      return favComments;
     } else {
       return comments;
     }

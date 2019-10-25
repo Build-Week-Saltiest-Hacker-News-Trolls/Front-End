@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
+import { AxiosWithAuth } from "./utils/AxiosWithAuth.js";
 import SignIn from "./SignInLayout/SignIn";
 import SignUp from "./SignInLayout/SignUp";
 import EditUser from "./components/EditUser.js";
@@ -16,12 +17,24 @@ import { fakeCommentData, fakeUserData } from "./fakeData.js";
 //Axios call goes here and data is added to "comments" state
 
 function App() {
+  //comments context
+  // const [comments, setComments] = useState(fakeCommentData);
+  const [comments, setComments] = useState([]);
+
+  useEffect(() => {
+    AxiosWithAuth()
+      .get("/comments")
+      .then(res => {
+        console.log("data from app.js", res.data.data);
+        setComments(res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   //user context
   const [user, setUser] = useState(fakeUserData);
   //user context
 
-  //comments context
-  const [comments, setComments] = useState(fakeCommentData);
   //comments context
 
   //fav comments context
