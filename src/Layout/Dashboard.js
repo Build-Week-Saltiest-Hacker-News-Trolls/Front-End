@@ -14,6 +14,12 @@ const Dashboard = props => {
   const { favComments, removeFromFavComments } = useContext(FavCommentContext);
   const [searchedComments, setSearchedComments] = useState([]);
   const [searchedTerm, setSearchedTerm] = useState("");
+  const [favoriteView, setFavoriteView] = useState(false);
+
+  const toggleFavoriteView = () => {
+    setFavoriteView(!favoriteView);
+  };
+
   const blankArray = [
     {
       positive: 0,
@@ -25,6 +31,8 @@ const Dashboard = props => {
       return blankArray;
     } else if (searchedComments.length !== 0) {
       return searchedComments;
+    } else if (favoriteView) {
+      return favComments;
     } else {
       return comments;
     }

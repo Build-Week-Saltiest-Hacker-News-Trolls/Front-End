@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { FavCommentContext } from "../Context/FavCommentContext.js";
 import FeedCardComponent from "./FeedCardComponent.js";
 
-
 import FeedCardDetails from "./FeedCardDetails.js";
 import { SearchForm, FeedCardContainer } from "../theme/Styled.js";
 import { Link } from "react-router-dom";
@@ -17,7 +16,7 @@ export default function SearchBar({
   setSearchedComments,
   setSearchedTerm
 }) {
-// <========== pass in comments through props ============>
+  // <========== pass in comments through props ============>
   const [searchTerm, setSearchTerm] = useState("");
   const [searchResults, setSearchResults] = useState([]);
   const [userView, setUserView] = useState(false);
@@ -90,7 +89,6 @@ export default function SearchBar({
     // TODO:
     // form needs updated styling to match rest of overall dashboard design
     <>
-
       {userView ? (
         <FeedCardContainer key={selectedUsername}>
           <h3 onClick={toggleUserView}>X</h3>
@@ -110,13 +108,13 @@ export default function SearchBar({
                 placeholder="  Search by username"
                 onChange={handleChange}
               />
-            <label>
-            Sort:
-            <Select defaultValue="" onChange={orderSort}>
-              <Option value="1">Ascending</Option>
-              <Option value="2">Descending</Option>
-            </Select>
-          </label>
+              <label>
+                Sort:
+                <Select defaultValue="" onChange={orderSort}>
+                  <Option value="1">Ascending</Option>
+                  <Option value="2">Descending</Option>
+                </Select>
+              </label>
             </SearchForm>
           </section>
           <FeedCardContainer>
