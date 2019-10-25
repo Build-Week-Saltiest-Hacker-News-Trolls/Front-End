@@ -4,13 +4,26 @@ import { UMBButton } from "../theme/Styled.js";
 
 import "../scss/Menu.scss";
 
-import { Drawer } from "antd";
+import { Drawer, Icon } from "antd";
 
 const Menu = props => {
+  console.log("props from Menu.js", props);
+
   const closeDrawer = () => {
     props.setMenuState({
       drawer: !props.menuState.drawer
     });
+  };
+
+  const openFavDrawer = () => {
+    props.setFavoritesDrawerState({
+      drawer: !props.favoritesDrawerState.drawer
+    });
+  };
+
+  const favoritesClickHandler = () => {
+    closeDrawer();
+    openFavDrawer();
   };
 
   return (
@@ -33,6 +46,10 @@ const Menu = props => {
         <Link to="/">
           <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
         </Link>
+        <div className="favoriteDiv" onClick={favoritesClickHandler}>
+          <h5>Favorites </h5>
+          <Icon type="heart" theme="filled" />
+        </div>
       </Drawer>
     </>
   );

@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import Logo from "../components/Logo.js";
 import Menu from "../components/Menu.js";
+import FavoritesDrawer from "../components/FavoritesDrawer.js";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
 
@@ -10,6 +11,9 @@ import { Icon, Avatar, Popover } from "antd";
 
 const NavBar = () => {
   const [menuState, setMenuState] = useState({
+    drawer: false
+  });
+  const [favoritesDrawerState, setFavoritesDrawerState] = useState({
     drawer: false
   });
 
@@ -41,7 +45,16 @@ const NavBar = () => {
           <Icon type="menu" onClick={openDrawer} />
           {/* Drawer Menu */}
         </div>
-        <Menu setMenuState={setMenuState} menuState={menuState} />
+        <Menu
+          setMenuState={setMenuState}
+          menuState={menuState}
+          favoritesDrawerState={favoritesDrawerState}
+          setFavoritesDrawerState={setFavoritesDrawerState}
+        />
+        <FavoritesDrawer
+          favoritesDrawerState={favoritesDrawerState}
+          setFavoritesDrawerState={setFavoritesDrawerState}
+        />
       </div>
     </div>
   );

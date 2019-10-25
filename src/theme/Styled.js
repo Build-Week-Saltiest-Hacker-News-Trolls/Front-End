@@ -80,27 +80,27 @@ export const SearchForm = styled.form`
 `;
 
 export const FootSpan = styled.span`
-    font-size: 1.5rem;
-    margin-left: 20px;
-`
+  font-size: 1.5rem;
+  margin-left: 20px;
+`;
 
 export const Outer = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-`
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+`;
 
 export const Inner = styled.div`
-    width: 75%;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    align-items: center;
-    span {
-      margin: 20px;
-    }
-`
+  width: 75%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+  span {
+    margin: 20px;
+  }
+`;
 export const FeedCardContainer = styled.div`
   display: flex;
   flex-direction: column;
