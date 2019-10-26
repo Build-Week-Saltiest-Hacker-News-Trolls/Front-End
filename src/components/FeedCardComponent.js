@@ -6,7 +6,7 @@ import { CommentContext } from "../Context/CommentContext";
 
 
 const FeedCardComponent = ({
-  setSelectedUsername,
+  setSelectedauthor,
   commentItem,
   toggleUserView
 }) => {
@@ -24,7 +24,7 @@ const FeedCardComponent = ({
 
   const toggleClickHandler = e => {
     toggleUserView();
-    setSelectedUsername(author);
+    setSelectedauthor(author);
     console.log("event from click handler", e);
   };
   // console.log("toggleUserView from feedCard", toggleUserView);
