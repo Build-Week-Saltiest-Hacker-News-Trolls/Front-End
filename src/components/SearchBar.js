@@ -172,7 +172,7 @@ export default function SearchBar({
               </label>
             </SearchForm>
           </section>
-          <FeedCardContainer>
+          <FeedCardContainer className="feed-card-cont">
             {/* Map over comment list or filtered comments or null */}
 
             {conditionalRender().length !== 0 ? (
