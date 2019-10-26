@@ -18,7 +18,7 @@ import { fakeCommentData, fakeUserData } from "./fakeData.js";
 
 function App() {
   //comments context
-  // const [comments, setComments] = useState(fakeCommentData);
+
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
