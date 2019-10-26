@@ -5,7 +5,6 @@ import { CommentContext } from "../Context/CommentContext";
 
 const FeedCardComponent = ({
   setSelectedAuthorId,
-
   commentItem,
   toggleUserView
 }) => {
@@ -45,12 +44,11 @@ const FeedCardComponent = ({
                 height: "230px"
               }}
             >
-              
-                <CardUsername className="leftTop">
+              <CardUsername className="leftTop">
                 <Popover
-                placement="left"
-                content={<p>See all comments by this user</p>}
-              >
+                  placement="left"
+                  content={<p>See all comments by this user</p>}
+                >
                   <strong
                     onClick={toggleClickHandler}
                     style={{ fontSize: "1.15rem" }}
@@ -59,9 +57,8 @@ const FeedCardComponent = ({
                   </strong>
 
                   <p>{original_comment_time}</p>
-                  </Popover>
-                </CardUsername>
-              
+                </Popover>
+              </CardUsername>
 
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
@@ -90,9 +87,7 @@ const FeedCardComponent = ({
               <div>
                 <button
                   className="fav-icon"
-                  onClick={() => {
-                    addToFavComments(commentItem);
-                  }}
+                  onClick={() => addToFavComments(commentItem)}
                 >
                   <Icon
                     type="heart"
