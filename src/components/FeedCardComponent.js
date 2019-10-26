@@ -4,7 +4,6 @@ import { Row, Col, Icon, Popover } from "antd";
 import { CommentContext } from "../Context/CommentContext";
 
 const FeedCardComponent = ({
-
   setSelectedAuthorId,
 
   commentItem,
@@ -65,8 +64,8 @@ const FeedCardComponent = ({
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
                   {Math.abs(pos) > Math.abs(neg)
-                    ? pos * 100 + "%"
-                    : neg * 100 + "%"}
+                    ? Math.floor(pos * 100) + "%"
+                    : Math.floor(neg * 100) + "%"}
                 </h3>
                 <strong>
                   {Math.abs(pos) > Math.abs(neg) ? "Positive" : "Salty"}
