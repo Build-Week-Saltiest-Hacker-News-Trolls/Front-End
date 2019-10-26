@@ -52,14 +52,14 @@ export default function SearchBar({
       let sortedResults = e.sort(function(a,b) {
         switch(filter.order) {
           case "asc":
-            return s === "neu" ? asc(a.neutral, b.neutral) :
-                   s === "pos" ? asc(a.positive, b.positive) :
-                   s === "neg" ? asc(a.negative, b.negative) :
+            return s === "neu" ? asc(a.neu, b.neu) :
+                   s === "pos" ? asc(a.pos, b.pos) :
+                   s === "neg" ? asc(a.neg, b.neg) :
                    asc(a.id, b.id)
           case "desc":
-            return s === "neu" ? desc(a.neutral, b.neutral) :
-                   s === "pos" ? desc(a.positive, b.positive) :
-                   s === "neg" ? desc(a.negative, b.negative) :
+            return s === "neu" ? desc(a.neu, b.neu) :
+                   s === "pos" ? desc(a.pos, b.pos) :
+                   s === "neg" ? desc(a.neg, b.neg) :
                    desc(a.id, b.id)
         }
       });
