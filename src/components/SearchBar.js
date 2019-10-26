@@ -54,6 +54,7 @@ export default function SearchBar({
     setSearchTerm(e.target.value);
   };
 
+
   //  filter by drop down selection
   const orderSort = e => {
     let s = filter.sentiment;
@@ -95,6 +96,7 @@ export default function SearchBar({
   const handleSentiment = e => {
     setFilter({ ...filter, sentiment: e });
   };
+
 
   // search filter function - runs each time seach value changes
   useEffect(() => {

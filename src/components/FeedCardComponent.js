@@ -4,7 +4,9 @@ import { Row, Col, Icon, Popover } from "antd";
 import { CommentContext } from "../Context/CommentContext";
 
 const FeedCardComponent = ({
+
   setSelectedAuthorId,
+
   commentItem,
   toggleUserView
 }) => {
@@ -22,7 +24,9 @@ const FeedCardComponent = ({
 
   const toggleClickHandler = e => {
     toggleUserView();
+
     setSelectedAuthorId(id);
+
     console.log("event from click handler", e);
   };
   // console.log("toggleUserView from feedCard", toggleUserView);
