@@ -34,6 +34,7 @@ function App() {
   //user context
   const [user, setUser] = useState(fakeUserData);
   //user context
+  console.log("user from app.js", user);
 
   //comments context
 

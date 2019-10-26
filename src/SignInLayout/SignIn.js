@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { AxiosWithAuth } from "../utils/AxiosWithAuth.js";
+import { UserContext } from "../Context/UserContext.js";
 
 import {
   UMBButton,
@@ -11,11 +14,17 @@ import {
   SignFormContainer
 } from "../theme/Styled.js";
 
-export default function SignIn() {
+export default function SignIn(props) {
+  console.log("props from SignIn", props.props);
+
+  const { setUser } = useContext(UserContext);
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
   });
+
+  const [loginFailure, setLoginFailure] = useState(false);
 
   const handleChange = e => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -23,13 +32,26 @@ export default function SignIn() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    AxiosWithAuth()
+      .post("/login", credentials)
+      .then(res => {
+        console.log(res);
+        setUser(credentials);
+        localStorage.setItem("token", "fakeTokenlkjsldfmnwaoij");
+        props.props.history.push("/dashboard");
+      })
+      .catch(err => {
+        console.log(err);
+        setLoginFailure(true);
+      });
+
     setCredentials({ username: "", password: "" });
   };
 
   return (
     <SignFormContainer>
       <Logo />
-      <SignForm>
+      <SignForm onSubmit={handleSubmit}>
         <InputContainer>
           <SignInput1
             id="username"
@@ -50,13 +72,15 @@ export default function SignIn() {
             placeholder="Password"
           />
         </InputContainer>
-        <Link to="/dashboard">
-          <UMBButton
-          // onClick={handleSubmit}
-          >
-            Sign In
-          </UMBButton>
-        </Link>
+        {loginFailure && (
+          <strong>
+            <p style={{ color: "red" }}>
+              Please enter the correct login information
+            </p>
+          </strong>
+        )}
+
+        <UMBButton onClick={handleSubmit}>Sign In</UMBButton>
       </SignForm>
     </SignFormContainer>
   );

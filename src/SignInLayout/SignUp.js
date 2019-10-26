@@ -1,18 +1,17 @@
 import React, { useState } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
-
+import { AxiosWithAuth } from "../utils/AxiosWithAuth.js";
 import {
   UMBButton,
   SignInput1,
   SignInput2,
-  InputLine,
   InputContainer,
   SignForm,
   SignFormContainer
 } from "../theme/Styled.js";
 
-export default function SignUp() {
+export default function SignUp(props) {
   const [credentials, setCredentials] = useState({
     display_name: "",
     email: "",
@@ -25,18 +24,25 @@ export default function SignUp() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    AxiosWithAuth()
+      .post("/users", credentials)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    props.closeDrawer();
+
     setCredentials({ display_name: "", email: "", password: "" });
   };
 
   return (
     <SignFormContainer>
       <Logo />
-      <SignForm>
+      <SignForm onSubmit={handleSubmit}>
         <InputContainer>
           <SignInput1
-            id="username"
-            value={credentials.username}
-            name="username"
+            id="display_name"
+            value={credentials.display_name}
+            name="display_name"
             type="text"
             onChange={handleChange}
             placeholder="Username"
@@ -63,11 +69,7 @@ export default function SignUp() {
           />
         </InputContainer>
         <Link to="/dashboard">
-          <UMBButton
-          // onClick={handleSubmit}
-          >
-            Sign Up
-          </UMBButton>
+          <UMBButton onClick={handleSubmit}>Sign Up</UMBButton>
         </Link>
       </SignForm>
     </SignFormContainer>
