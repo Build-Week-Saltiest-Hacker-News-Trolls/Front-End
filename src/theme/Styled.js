@@ -8,6 +8,7 @@ export const UMBButton = styled.button`
   padding: 6px 15px;
   box-shadow: 1px 1px 1px whitesmoke;
   transition: 400ms;
+  justify-content: center;
 
   &:hover {
     filter: hue-rotate(-30deg) brightness(110%);
@@ -127,15 +128,15 @@ export const FeedCardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  height: 25%;
 `;
 
 export const CardUsername = styled.div`
-    &:hover {
-      cursor: pointer;
+  &:hover {
+    cursor: pointer;
 
-      strong {      
-        color: rgba(255, 114, 0, 1)
-      } 
-    }
+    strong {      
+      color: rgba(255, 114, 0, 1)
+    } 
   }
 `;

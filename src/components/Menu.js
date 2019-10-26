@@ -36,7 +36,6 @@ const Menu = props => {
         <div className="menu">
           <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/index.html">Marketing Page</NavLink>
           <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/about.html">About the Team</NavLink>
-          <NavLink to="/contact">Contact</NavLink>
           <NavLink to="/edit">
             <span>Edit User Info</span>
           </NavLink>

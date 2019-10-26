@@ -45,11 +45,12 @@ const FeedCardComponent = ({
                 height: "230px"
               }}
             >
-              <Popover
-                placement="leftTop"
+              
+                <CardUsername className="leftTop">
+                <Popover
+                placement="left"
                 content={<p>See all comments by this user</p>}
               >
-                <CardUsername className="leftTop">
                   <strong
                     onClick={toggleClickHandler}
                     style={{ fontSize: "1.15rem" }}
@@ -58,8 +59,9 @@ const FeedCardComponent = ({
                   </strong>
 
                   <p>{original_comment_time}</p>
+                  </Popover>
                 </CardUsername>
-              </Popover>
+              
 
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
