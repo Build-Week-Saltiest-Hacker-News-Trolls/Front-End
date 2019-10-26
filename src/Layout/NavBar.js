@@ -9,7 +9,7 @@ import "../scss/NavBar.scss";
 
 import { Icon, Avatar, Popover } from "antd";
 
-const NavBar = () => {
+const NavBar = props => {
   const [menuState, setMenuState] = useState({
     drawer: false
   });
@@ -42,7 +42,11 @@ const NavBar = () => {
           <Icon type="menu" onClick={openDrawer} />
           {/* Drawer Menu */}
         </div>
-        <Menu setMenuState={setMenuState} menuState={menuState} />
+        <Menu
+          props={props.props}
+          setMenuState={setMenuState}
+          menuState={menuState}
+        />
         <FavoritesDrawer
           favoriteDrawerState={favoriteDrawerState}
           setFavoriteDrawerState={setFavoriteDrawerState}

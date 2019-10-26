@@ -13,6 +13,13 @@ const Menu = props => {
     });
   };
 
+  console.log("props from menu", props);
+
+  const signOut = () => {
+    localStorage.removeItem("token");
+    props.props.history.push("/");
+  };
+
   return (
     <>
       <Drawer
@@ -23,16 +30,21 @@ const Menu = props => {
         width="50%"
       >
         <div className="menu">
-
-          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/index.html">Marketing Page</NavLink>
-          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/about.html">About the Team</NavLink>
+          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/index.html">
+            Marketing Page
+          </NavLink>
+          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/about.html">
+            About the Team
+          </NavLink>
 
           <NavLink to="/edit">
             <span>Edit User Info</span>
           </NavLink>
         </div>
         <Link to="/">
-          <UMBButton style={{ marginTop: "30px" }}>Sign Out</UMBButton>
+          <UMBButton onClick={signOut} style={{ marginTop: "30px" }}>
+            Sign Out
+          </UMBButton>
         </Link>
       </Drawer>
     </>

@@ -40,7 +40,7 @@ const Dashboard = props => {
 
   return (
     <>
-      <NavBar />
+      <NavBar props={props} />
       <Graph comments={condition()} />
       <SearchBar
         comments={comments}
