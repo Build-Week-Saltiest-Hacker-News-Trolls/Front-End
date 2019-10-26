@@ -62,19 +62,19 @@ export default function SearchBar({
       switch (filter.order) {
         case "asc":
           return s === "neu"
-            ? asc(a.neutral, b.neutral)
+            ? asc(a.neu, b.neu)
             : s === "pos"
-            ? asc(a.positive, b.positive)
+            ? asc(a.pos, b.pos)
             : s === "neg"
-            ? asc(a.negative, b.negative)
+            ? asc(a.neg, b.neg)
             : asc(a.id, b.id);
         case "desc":
           return s === "neu"
-            ? desc(a.neutral, b.neutral)
+            ? desc(a.neut, b.neu)
             : s === "pos"
-            ? desc(a.positive, b.positive)
+            ? desc(a.pos, b.pos)
             : s === "neg"
-            ? desc(a.negative, b.negative)
+            ? desc(a.neg, b.neg)
             : desc(a.id, b.id);
       }
     });
@@ -123,7 +123,7 @@ export default function SearchBar({
     // form needs updated styling to match rest of overall dashboard design
     <>
       {userView ? (
-        <FeedCardContainer key={selectedAuthorId}>
+        <FeedCardContainer key={selectedAuthorId} className="feed-card-cont">
           <h3 onClick={toggleUserView}>X</h3>
           {filteredComments.map(comment => (
             <FeedCardDetails
@@ -172,7 +172,7 @@ export default function SearchBar({
               </label>
             </SearchForm>
           </section>
-          <FeedCardContainer>
+          <FeedCardContainer className="feed-card-cont">
             {/* Map over comment list or filtered comments or null */}
 
             {conditionalRender().length !== 0 ? (

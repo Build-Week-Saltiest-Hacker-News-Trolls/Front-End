@@ -8,6 +8,7 @@ export const UMBButton = styled.button`
   padding: 6px 15px;
   box-shadow: 1px 1px 1px whitesmoke;
   transition: 400ms;
+  justify-content: center;
 
   &:hover {
     filter: hue-rotate(-30deg) brightness(110%);
@@ -59,12 +60,13 @@ export const EditHeader = styled.h4`
 
 export const FeedCard = styled.div`
   border-radius: 10px;
+  border: 1.5px solid silver;
   background: whitesmoke;
   box-shadow: 1px 1px 3px silver;
-  width: 400px;
+  width: 90%;
   height: 250px;
   padding: 10px;
-  margin: 10px;
+  margin: 10px auto;
 `;
 
 export const SearchForm = styled.form`
@@ -74,7 +76,7 @@ export const SearchForm = styled.form`
   width: 50%;
   height: 50px;
   margin: 15px auto;
-  margin-bottom: 100px;
+  margin-bottom: 120px;
   padding-bottom: 18px;
   color: black;
 `;
@@ -126,15 +128,15 @@ export const FeedCardContainer = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
+  height: 25%;
 `;
 
 export const CardUsername = styled.div`
-    &:hover {
-      cursor: pointer;
+  &:hover {
+    cursor: pointer;
 
-      strong {      
-        color: rgba(255, 114, 0, 1)
-      } 
-    }
+    strong {      
+      color: rgba(255, 114, 0, 1)
+    } 
   }
 `;
