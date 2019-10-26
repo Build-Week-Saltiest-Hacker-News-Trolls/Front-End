@@ -14,7 +14,8 @@ import {
 
 export default function SignUp() {
   const [credentials, setCredentials] = useState({
-    username: "",
+    display_name: "",
+    email: "",
     password: ""
   });
 
@@ -24,7 +25,7 @@ export default function SignUp() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setCredentials({ username: "", password: "" });
+    setCredentials({ display_name: "", email: "", password: "" });
   };
 
   return (
@@ -39,6 +40,16 @@ export default function SignUp() {
             type="text"
             onChange={handleChange}
             placeholder="Username"
+          />
+        </InputContainer>
+        <InputContainer>
+          <SignInput1
+            id="email"
+            value={credentials.email}
+            name="email"
+            type="email"
+            onChange={handleChange}
+            placeholder="Email"
           />
         </InputContainer>
         <InputContainer>
