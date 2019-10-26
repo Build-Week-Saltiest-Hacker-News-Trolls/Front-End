@@ -62,19 +62,19 @@ export default function SearchBar({
       switch (filter.order) {
         case "asc":
           return s === "neu"
-            ? asc(a.neutral, b.neutral)
+            ? asc(a.neu, b.neu)
             : s === "pos"
-            ? asc(a.positive, b.positive)
+            ? asc(a.pos, b.pos)
             : s === "neg"
-            ? asc(a.negative, b.negative)
+            ? asc(a.neg, b.neg)
             : asc(a.id, b.id);
         case "desc":
           return s === "neu"
-            ? desc(a.neutral, b.neutral)
+            ? desc(a.neut, b.neu)
             : s === "pos"
-            ? desc(a.positive, b.positive)
+            ? desc(a.pos, b.pos)
             : s === "neg"
-            ? desc(a.negative, b.negative)
+            ? desc(a.neg, b.neg)
             : desc(a.id, b.id);
       }
     });
