@@ -1,12 +1,12 @@
-
 import React, { useState, useContext } from "react";
 import { FeedCard, CardUsername } from "../theme/Styled.js";
 import { Row, Col, Icon, Popover } from "antd";
 import { CommentContext } from "../Context/CommentContext";
 
-
 const FeedCardComponent = ({
-  setSelectedauthor,
+
+  setSelectedAuthorId,
+
   commentItem,
   toggleUserView
 }) => {
@@ -24,7 +24,9 @@ const FeedCardComponent = ({
 
   const toggleClickHandler = e => {
     toggleUserView();
-    setSelectedauthor(author);
+
+    setSelectedAuthorId(id);
+
     console.log("event from click handler", e);
   };
   // console.log("toggleUserView from feedCard", toggleUserView);
@@ -44,13 +46,10 @@ const FeedCardComponent = ({
                 height: "230px"
               }}
             >
-
-              <Popover placement="leftTop" content={
-              <p>
-                See all comments by this user
-              </p>
-            }
-            >
+              <Popover
+                placement="leftTop"
+                content={<p>See all comments by this user</p>}
+              >
                 <CardUsername className="leftTop">
                   <strong
                     onClick={toggleClickHandler}
