@@ -1,7 +1,8 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
 import { UserContext } from "../Context/UserContext";
+import { AxiosWithAuth } from "../utils/AxiosWithAuth.js";
 
 import {
   EditHeader,
@@ -16,11 +17,15 @@ import {
 export default function EditUser(props) {
   const { user, setUser } = useContext(UserContext);
 
+  console.log("user from editUser", user);
+
   const [updatedUser, setUpdatedUser] = useState({
     username: user.username,
     password: user.password,
     email: user.email
   });
+
+  const [showMessage, setShowMessage] = useState(false);
 
   const handleChange = e => {
     setUpdatedUser({ ...updatedUser, [e.target.name]: e.target.value });
@@ -28,7 +33,20 @@ export default function EditUser(props) {
 
   // TODO: Add Save Button Functionality
   const handleSave = e => {
+    setShowMessage(true);
+    setTimeout(function() {
+      setShowMessage(false);
+    }, 1000);
     e.preventDefault();
+
+    AxiosWithAuth()
+      .put(`/users/${user.id}`, updatedUser)
+      .then(res => {
+        console.log(res);
+        props.history.push("/dashboard");
+      })
+      .catch(err => console.log(err));
+
     setUser(updatedUser);
   };
 
@@ -77,6 +95,11 @@ export default function EditUser(props) {
         <Link to="/dashboard">
           <UMBButton>Cancel</UMBButton>
         </Link>
+        {showMessage ? (
+          <h5 style={{ color: "green" }}>User Updated!</h5>
+        ) : (
+          <></>
+        )}
       </SignForm>
     </SignFormContainer>
   );

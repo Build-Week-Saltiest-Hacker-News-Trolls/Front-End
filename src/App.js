@@ -18,7 +18,7 @@ import { fakeCommentData, fakeUserData } from "./fakeData.js";
 
 function App() {
   //comments context
-  // const [comments, setComments] = useState(fakeCommentData);
+
   const [comments, setComments] = useState([]);
 
   useEffect(() => {
@@ -34,7 +34,6 @@ function App() {
   //user context
   const [user, setUser] = useState(fakeUserData);
   //user context
-  console.log("user from app.js", user);
 
   //comments context
 
