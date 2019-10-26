@@ -59,12 +59,13 @@ export const EditHeader = styled.h4`
 
 export const FeedCard = styled.div`
   border-radius: 10px;
+  border: 1.5px solid silver;
   background: whitesmoke;
   box-shadow: 1px 1px 3px silver;
-  width: 400px;
+  width: 90%;
   height: 250px;
   padding: 10px;
-  margin: 10px;
+  margin: 10px auto;
 `;
 
 export const SearchForm = styled.form`
@@ -74,7 +75,7 @@ export const SearchForm = styled.form`
   width: 50%;
   height: 50px;
   margin: 15px auto;
-  margin-bottom: 100px;
+  margin-bottom: 120px;
   padding-bottom: 18px;
   color: black;
 `;
