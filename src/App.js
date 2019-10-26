@@ -38,18 +38,37 @@ function App() {
   //comments context
 
   //fav comments context
+
   const [favComments, setFavComments] = useState([]);
 
+  useEffect(() => {
+    AxiosWithAuth()
+      .get(`/users/${user.id}/comments`)
+      .then(res => {
+        console.log("data from favComments", res.data);
+        setFavComments(res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
+
   const addToFavComments = comment => {
-    setFavComments([...favComments, comment]);
+    console.log("comment from add fav", comment);
+
+    AxiosWithAuth()
+      .post(`/users/${user.id}/comments/${comment.id}`)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    // setFavComments([...favComments, comment]);
   };
 
   const removeFromFavComments = commentId => {
-    setFavComments(
-      favComments.filter(comment => {
-        return comment.id !== commentId;
-      })
-    );
+    AxiosWithAuth()
+      .delete(`/users/${user.id}/comments/${commentId}`)
+      .then(res => console.log("delete from favComments", res))
+      .catch(err => console.log(err));
+
+    setFavComments(favComments.filter(comment => commentId !== comment.id));
   };
   //fav comments context
 

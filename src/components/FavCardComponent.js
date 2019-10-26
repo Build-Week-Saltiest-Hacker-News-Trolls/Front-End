@@ -8,16 +8,13 @@ import { Row, Col, Icon } from "antd";
 export default function FavCardComponent(props) {
   const {
     id,
-    username,
-    commentDate,
-    positive,
-    negative,
-    neutral,
-    comment
+    author,
+    original_comment_time,
+    pos,
+    neg,
+    neu,
+    comment_text
   } = props.commentItem;
-
-  console.log(username);
-  console.log("props from feedcard.js", props);
 
   const { removeFromFavComments } = useContext(FavCommentContext);
 
@@ -41,20 +38,16 @@ export default function FavCardComponent(props) {
                 height: "230px"
               }}
             >
-              <div classname="leftTop">
-                <strong style={{ fontSize: "1.15rem" }}>{username}</strong>
-                <p>{commentDate}</p>
+              <div className="leftTop">
+                <strong style={{ fontSize: "1.15rem" }}>{author}</strong>
+                <p>{original_comment_time}</p>
               </div>
               <div className="leftBottom">
                 <h3 style={{ color: "rgba(255, 114, 0, 1)" }}>
-                  {Math.abs(positive) > Math.abs(negative)
-                    ? positive
-                    : negative}
+                  {Math.abs(pos) > Math.abs(neg) ? pos : neg}
                 </h3>
                 <strong>
-                  {Math.abs(positive) > Math.abs(negative)
-                    ? "Positive"
-                    : "Salty"}
+                  {Math.abs(pos) > Math.abs(neg) ? "Positive" : "Salty"}
                 </strong>
               </div>
             </div>
@@ -70,7 +63,7 @@ export default function FavCardComponent(props) {
               }}
             >
               <strong style={{ fontSize: "1.15rem" }}>Comment</strong>
-              <p>{comment}</p>
+              <p>{comment_text}</p>
             </div>
           </Col>
         </Row>
