@@ -123,7 +123,7 @@ export default function SearchBar({
     // form needs updated styling to match rest of overall dashboard design
     <>
       {userView ? (
-        <FeedCardContainer key={selectedAuthorId}>
+        <FeedCardContainer key={selectedAuthorId} className="feed-card-cont">
           <h3 onClick={toggleUserView}>X</h3>
           {filteredComments.map(comment => (
             <FeedCardDetails
