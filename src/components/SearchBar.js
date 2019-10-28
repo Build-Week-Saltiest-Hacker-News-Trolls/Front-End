@@ -6,7 +6,7 @@ import FeedCardDetails from "./FeedCardDetails.js";
 import { SearchForm, FeedCardContainer } from "../theme/Styled.js";
 import { Link } from "react-router-dom";
 
-import { Select } from "antd";
+import { Select, Row, Col } from "antd";
 
 const { Option } = Select;
 
@@ -54,7 +54,6 @@ export default function SearchBar({
     setSearchTerm(e.target.value);
   };
 
-
   //  filter by drop down selection
   const orderSort = e => {
     let s = filter.sentiment;
@@ -97,7 +96,6 @@ export default function SearchBar({
     setFilter({ ...filter, sentiment: e });
   };
 
-
   // search filter function - runs each time seach value changes
   useEffect(() => {
     const results = comments.filter(comment =>
@@ -106,7 +104,7 @@ export default function SearchBar({
     setSearchResults(results);
     setSearchedComments(results);
     setSearchedTerm(searchTerm);
-    console.log("Search Results", searchResults);
+    // console.log("Search Results", searchResults);
   }, [searchTerm]);
 
   // Render full comment list or searchResults(if any)
@@ -137,39 +135,49 @@ export default function SearchBar({
           <section className="search-form">
             {/* Styled Component */}
             <SearchForm>
-              <input
-                size="large"
-                id="search"
-                value={searchTerm}
-                name="search"
-                type="text"
-                placeholder="  Search by author"
-                onChange={handleChange}
-              />
-              <label>
-                Sort Order:
-                <Select
-                  name="order"
-                  defaultValue="asc"
-                  onChange={handleOrder.bind(this)}
-                >
-                  <Option value="asc">Ascending</Option>
-                  <Option value="desc">Descending</Option>
-                </Select>
-              </label>
-              <label>
-                Filter By:
-                <Select
-                  name="filter"
-                  defaultValue="nil"
-                  onChange={handleSentiment.bind(this)}
-                >
-                  <Option value="nil"></Option>
-                  <Option value="neu">Neutrality</Option>
-                  <Option value="pos">Positivity</Option>
-                  <Option value="neg">Negativity</Option>
-                </Select>
-              </label>
+              <Row>
+                <Col span={24}>
+                  <input
+                    size="large"
+                    id="search"
+                    value={searchTerm}
+                    name="search"
+                    type="text"
+                    placeholder="  Search by author"
+                    onChange={handleChange}
+                  />
+                </Col>
+              </Row>
+              <Row>
+                <Col offset={8} span={8}>
+                  <label>
+                    Sort Order:
+                    <Select
+                      name="order"
+                      defaultValue="asc"
+                      onChange={handleOrder.bind(this)}
+                    >
+                      <Option value="asc">Ascending</Option>
+                      <Option value="desc">Descending</Option>
+                    </Select>
+                  </label>
+                </Col>
+                <Col span={8}>
+                  <label>
+                    Filter By:
+                    <Select
+                      name="filter"
+                      defaultValue="nil"
+                      onChange={handleSentiment.bind(this)}
+                    >
+                      <Option value="nil"></Option>
+                      <Option value="neu">Neutrality</Option>
+                      <Option value="pos">Positivity</Option>
+                      <Option value="neg">Negativity</Option>
+                    </Select>
+                  </label>
+                </Col>
+              </Row>
             </SearchForm>
           </section>
           <FeedCardContainer className="feed-card-cont">

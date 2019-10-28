@@ -36,7 +36,7 @@ const NavBar = props => {
         <div>
           <Avatar style={{ backgroundColor: "orange", marginRight: "25px" }}>
             <div onClick={showFavorites}>
-              {user.username.charAt(0).toUpperCase()}
+              {user.display_name.charAt(0).toUpperCase()}
             </div>
           </Avatar>
           <Icon type="menu" onClick={openDrawer} />

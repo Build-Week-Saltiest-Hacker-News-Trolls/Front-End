@@ -13,7 +13,8 @@ export default function FavCardComponent(props) {
     pos,
     neg,
     neu,
-    comment_text
+    comment_text,
+    comment_id
   } = props.commentItem;
 
   const { removeFromFavComments } = useContext(FavCommentContext);
@@ -21,14 +22,15 @@ export default function FavCardComponent(props) {
   return (
     <>
       <FeedCard>
-        <div
-          onClick={() => {
-            removeFromFavComments(id);
-          }}
-        >
-          <Icon type="close" />
-        </div>
         <Row>
+          <div
+            style={{ position: "absolute", top: 0, right: 0 }}
+            onClick={() => {
+              removeFromFavComments(comment_id);
+            }}
+          >
+            <Icon type="close" />
+          </div>
           <Col span={9}>
             <div
               style={{

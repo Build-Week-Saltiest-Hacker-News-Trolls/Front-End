@@ -20,19 +20,20 @@ function App() {
   //comments context
 
   const [comments, setComments] = useState([]);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     AxiosWithAuth()
       .get("/comments")
       .then(res => {
-        console.log("data from app.js", res.data.data);
+        // console.log("data from app.js", res.data.data);
         setComments(res.data.data);
       })
       .catch(err => console.log(err));
   }, []);
 
   //user context
-  const [user, setUser] = useState(fakeUserData);
+  const [user, setUser] = useState();
   //user context
 
   //comments context
@@ -41,42 +42,31 @@ function App() {
 
   const [favComments, setFavComments] = useState([]);
 
-  useEffect(() => {
-    AxiosWithAuth()
-      .get(`/users/${user.id}/comments`)
-      .then(res => {
-        console.log("data from favComments", res.data);
-        setFavComments(res.data.data);
-      })
-      .catch(err => console.log(err));
-  }, []);
-
   const addToFavComments = comment => {
-    console.log("comment from add fav", comment);
-
     AxiosWithAuth()
       .post(`/users/${user.id}/comments/${comment.id}`)
       .then(res => console.log(res))
       .catch(err => console.log(err));
-
-    // setFavComments([...favComments, comment]);
   };
 
   const removeFromFavComments = commentId => {
     AxiosWithAuth()
       .delete(`/users/${user.id}/comments/${commentId}`)
-      .then(res => console.log("delete from favComments", res))
+      .then(res => {
+        console.log(res);
+      })
       .catch(err => console.log(err));
-
-    setFavComments(favComments.filter(comment => commentId !== comment.id));
+    // setFavComments(favComments.filter(comment => commentId !== comment.id));
   };
+
+  useEffect(() => {}, [setFavComments]);
   //fav comments context
 
   return (
     <main>
       <CommentContext.Provider value={{ comments, addToFavComments }}>
         <FavCommentContext.Provider
-          value={{ favComments, removeFromFavComments }}
+          value={{ favComments, removeFromFavComments, setFavComments }}
         >
           <UserContext.Provider value={{ user, setUser }}>
             <Route exact path="/" component={Landing} />

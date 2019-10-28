@@ -13,7 +13,7 @@ const Menu = props => {
     });
   };
 
-  console.log("props from menu", props);
+  // console.log("props from menu", props);
 
   const signOut = () => {
     localStorage.removeItem("token");

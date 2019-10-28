@@ -1,4 +1,4 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Route } from "react-router-dom";
 import Feed from "../components/Feed.js";
 import NavBar from "./NavBar.js";
@@ -6,21 +6,30 @@ import Graph from "../components/Graph.js";
 import FeedCardDetails from "../components/FeedCardDetails.js";
 import { CommentContext } from "../Context/CommentContext.js";
 import { FavCommentContext } from "../Context/FavCommentContext.js";
+import { UserContext } from "../Context/UserContext.js";
 import SearchBar from "../components/SearchBar.js";
 import Footer from "./Footer.js";
+import { AxiosWithAuth } from "../utils/AxiosWithAuth.js";
 
 const Dashboard = props => {
+  const { user, setUser } = useContext(UserContext);
   const { comments, addToFavComments } = useContext(CommentContext);
-  const { favComments, removeFromFavComments } = useContext(FavCommentContext);
+  const { favComments, removeFromFavComments, setFavComments } = useContext(
+    FavCommentContext
+  );
   const [searchedComments, setSearchedComments] = useState([]);
   const [searchedTerm, setSearchedTerm] = useState("");
-  const [favoriteView, setFavoriteView] = useState(false);
 
-  console.log("comments from dashboard", comments);
+  // console.log("comments from dashboard", comments);
 
-  const toggleFavoriteView = () => {
-    setFavoriteView(!favoriteView);
-  };
+  useEffect(() => {
+    AxiosWithAuth()
+      .get(`/users/${user.id}/comments`)
+      .then(res => {
+        setFavComments(res.data.data);
+      })
+      .catch(err => console.log(err));
+  }, []);
 
   const blankArray = [
     {
