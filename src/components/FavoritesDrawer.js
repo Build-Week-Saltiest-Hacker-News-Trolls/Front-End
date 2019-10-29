@@ -25,6 +25,11 @@ const Menu = props => {
         onClose={closeDrawer}
         height="75vh"
       >
+        <Row>
+          <Col>
+            <h5>Your Favorites:</h5>
+          </Col>
+        </Row>
         <Row style={{ overflowY: "scroll", height: "68vh" }}>
           {favComments.length ? (
             favComments.map(item => (

@@ -70,14 +70,14 @@ export const FeedCard = styled.div`
 `;
 
 export const SearchForm = styled.form`
-  border-bottom: none;
-  border: 1px solid silver;
-  border-radius: 10px;
-  width: 50%;
-  height: 50px;
+  // border-bottom: none;
+  // border: 1px solid silver;
+  // border-radius: 10px;
+  width: 90%;
+  // height: 50px;
   margin: 15px auto;
   margin-bottom: 120px;
-  padding-bottom: 18px;
+  // padding-bottom: 18px;
   color: black;
 `;
 
@@ -94,7 +94,7 @@ export const Outer = styled.div`
   align-items: center;
   background-color: rgba(2, 24, 43, 1);
   color: white;
-  `;
+`;
 
 export const Inner = styled.div`
   width: 75%;
@@ -105,7 +105,7 @@ export const Inner = styled.div`
   a {
     margin: 20px;
     color: white;
-    font-size: 1.5rem; 
+    font-size: 1.5rem;
   }
 `;
 
@@ -116,11 +116,11 @@ export const Copy = styled.div`
 
   p {
     background-color: rgba(2, 24, 43, 1);
-    font-size: 1.3rem; 
+    font-size: 1.3rem;
     margin: 0;
     padding: 2rem 0;
   }
-`
+`;
 
 export const FeedCardContainer = styled.div`
   display: flex;
@@ -135,8 +135,8 @@ export const CardUsername = styled.div`
   &:hover {
     cursor: pointer;
 
-    strong {      
-      color: rgba(255, 114, 0, 1)
-    } 
+    strong {
+      color: rgba(255, 114, 0, 1);
+    }
   }
 `;

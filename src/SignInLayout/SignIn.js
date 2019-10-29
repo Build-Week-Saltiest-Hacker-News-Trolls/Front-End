@@ -15,7 +15,7 @@ import {
 } from "../theme/Styled.js";
 
 export default function SignIn(props) {
-  console.log("props from SignIn", props.props);
+  // console.log("props from SignIn", props.props);
 
   const { setUser } = useContext(UserContext);
 
@@ -35,8 +35,8 @@ export default function SignIn(props) {
     AxiosWithAuth()
       .post("/login", credentials)
       .then(res => {
-        console.log(res);
-        setUser(credentials);
+        console.log("Results from Signin", res);
+        setUser(res.data);
         localStorage.setItem("token", "fakeTokenlkjsldfmnwaoij");
         props.props.history.push("/dashboard");
       })
