@@ -19,6 +19,8 @@ const NavBar = props => {
 
   const { user } = useContext(UserContext);
 
+  console.log("User from NavBar.sj ", user);
+
   const openDrawer = () => {
     setMenuState({ drawer: !menuState.drawer });
   };

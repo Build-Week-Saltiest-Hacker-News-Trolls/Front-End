@@ -13,6 +13,7 @@ import { CommentContext } from "./Context/CommentContext.js";
 import { FavCommentContext } from "./Context/FavCommentContext.js";
 import { UserContext } from "./Context/UserContext.js";
 import { fakeCommentData, fakeUserData } from "./fakeData.js";
+import Axios from "axios";
 
 //Axios call goes here and data is added to "comments" state
 
@@ -33,33 +34,44 @@ function App() {
   }, []);
 
   //user context
-  const [user, setUser] = useState();
+  const [user, setUser] = useState(fakeUserData);
   //user context
-
+  console.log("User from App.js", user);
   //comments context
 
   //fav comments context
 
   const [favComments, setFavComments] = useState([]);
 
-  const addToFavComments = comment => {
+  const getFavComments = () => {
     AxiosWithAuth()
-      .post(`/users/${user.id}/comments/${comment.id}`)
-      .then(res => console.log(res))
+      .get(`/users/${user.id}/comments/`)
+      .then(res => {
+        console.log("Get Fav Comments ", res);
+        setFavComments(res.data.data);
+      })
       .catch(err => console.log(err));
   };
 
-  const removeFromFavComments = commentId => {
+  const addToFavComments = comment => {
     AxiosWithAuth()
-      .delete(`/users/${user.id}/comments/${commentId}`)
+      .post(`/users/${user.id}/comments/${comment.id}`)
+      .then(res => getFavComments())
+      .catch(err => console.log(err));
+  };
+
+  const removeFromFavComments = id => {
+    AxiosWithAuth()
+      .delete(`/users/${user.id}/comments/${id}`)
       .then(res => {
-        console.log(res);
+        // console.log("removeFromFavComments ", res);
+        getFavComments();
       })
       .catch(err => console.log(err));
     // setFavComments(favComments.filter(comment => commentId !== comment.id));
   };
 
-  useEffect(() => {}, [setFavComments]);
+  useEffect(() => {}, [favComments]);
   //fav comments context
 
   return (

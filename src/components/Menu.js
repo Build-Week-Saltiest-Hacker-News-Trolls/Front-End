@@ -30,13 +30,12 @@ const Menu = props => {
         width="50%"
       >
         <div className="menu">
-          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/index.html">
+          <a href="https://relaxed-thompson-079af1.netlify.com/">
             Marketing Page
-          </NavLink>
-          <NavLink to="https://build-week-saltiest-hacker-news-trolls.github.io/Marketing-Page/about.html">
+          </a>
+          <a href="https://relaxed-thompson-079af1.netlify.com/about.html">
             About the Team
-          </NavLink>
-
+          </a>
           <NavLink to="/edit">
             <span>Edit User Info</span>
           </NavLink>
