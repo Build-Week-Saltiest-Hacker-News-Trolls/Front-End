@@ -1,5 +1,6 @@
 import React from "react";
 import "../scss/Loading.scss";
+import Logo from "../components/Logo.js";
 
 import { Spin, Icon } from "antd";
 

@@ -7,7 +7,7 @@ import "../scss/Landing.scss";
 import SignIn from "../SignInLayout/SignIn.js";
 import SignUp from "../SignInLayout/SignUp.js";
 
-const Landing = () => {
+const Landing = props => {
   const [landingState, setLandingState] = useState({
     drawer: false,
     view: ""
@@ -45,9 +45,13 @@ const Landing = () => {
         closable={true}
         visible={landingState.drawer}
         onClose={closeDrawer}
-        height="90%"
+        height="60%"
       >
-        {landingState.view === "signIn" ? <SignIn /> : <SignUp />}
+        {landingState.view === "signIn" ? (
+          <SignIn props={props} />
+        ) : (
+          <SignUp closeDrawer={closeDrawer} />
+        )}
       </Drawer>
     </div>
   );

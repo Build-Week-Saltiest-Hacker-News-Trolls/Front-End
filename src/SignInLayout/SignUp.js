@@ -1,8 +1,20 @@
 import React, { useState } from "react";
+import Logo from "../components/Logo";
+import { Link } from "react-router-dom";
+import { AxiosWithAuth } from "../utils/AxiosWithAuth.js";
+import {
+  UMBButton,
+  SignInput1,
+  SignInput2,
+  InputContainer,
+  SignForm,
+  SignFormContainer
+} from "../theme/Styled.js";
 
-export default function SignUp() {
+export default function SignUp(props) {
   const [credentials, setCredentials] = useState({
-    username: "",
+    display_name: "",
+    email: "",
     password: ""
   });
 
@@ -12,31 +24,54 @@ export default function SignUp() {
 
   const handleSubmit = e => {
     e.preventDefault();
-    setCredentials({ username: "", password: "" });
+    AxiosWithAuth()
+      .post("/users", credentials)
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+
+    props.closeDrawer();
+
+    setCredentials({ display_name: "", email: "", password: "" });
   };
 
   return (
-    <>
-      <h1>Sign Up</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input
-          id="username"
-          value={credentials.username}
-          name="username"
-          type="text"
-          onChange={handleChange}
-        />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          value={credentials.password}
-          name="password"
-          type="password"
-          onChange={handleChange}
-        />
-        <button type="submit">Sign Up</button>
-      </form>
-    </>
+    <SignFormContainer>
+      <Logo />
+      <SignForm onSubmit={handleSubmit}>
+        <InputContainer>
+          <SignInput1
+            id="display_name"
+            value={credentials.display_name}
+            name="display_name"
+            type="text"
+            onChange={handleChange}
+            placeholder="Username"
+          />
+        </InputContainer>
+        <InputContainer>
+          <SignInput1
+            id="email"
+            value={credentials.email}
+            name="email"
+            type="email"
+            onChange={handleChange}
+            placeholder="Email"
+          />
+        </InputContainer>
+        <InputContainer>
+          <SignInput2
+            id="password"
+            value={credentials.password}
+            name="password"
+            type="password"
+            onChange={handleChange}
+            placeholder="Password"
+          />
+        </InputContainer>
+        <Link to="/dashboard">
+          <UMBButton onClick={handleSubmit}>Sign Up</UMBButton>
+        </Link>
+      </SignForm>
+    </SignFormContainer>
   );
 }

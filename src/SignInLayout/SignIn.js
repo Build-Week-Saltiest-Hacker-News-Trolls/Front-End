@@ -1,11 +1,30 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { Redirect } from "react-router-dom";
+import Logo from "../components/Logo";
 import { Link } from "react-router-dom";
+import { AxiosWithAuth } from "../utils/AxiosWithAuth.js";
+import { UserContext } from "../Context/UserContext.js";
 
-export default function SignIn() {
+import {
+  UMBButton,
+  SignInput1,
+  SignInput2,
+  InputContainer,
+  SignForm,
+  SignFormContainer
+} from "../theme/Styled.js";
+
+export default function SignIn(props) {
+  // console.log("props from SignIn", props.props);
+
+  const { setUser } = useContext(UserContext);
+
   const [credentials, setCredentials] = useState({
     username: "",
     password: ""
   });
+
+  const [loginFailure, setLoginFailure] = useState(false);
 
   const handleChange = e => {
     setCredentials({ ...credentials, [e.target.name]: e.target.value });
@@ -13,36 +32,56 @@ export default function SignIn() {
 
   const handleSubmit = e => {
     e.preventDefault();
+    AxiosWithAuth()
+      .post("/login", credentials)
+      .then(res => {
+        console.log("Results from Signin", res);
+        setUser(res.data);
+        localStorage.setItem("token", "fakeTokenlkjsldfmnwaoij");
+        props.props.history.push("/dashboard");
+      })
+      .catch(err => {
+        console.log(err);
+        setLoginFailure(true);
+      });
+
     setCredentials({ username: "", password: "" });
   };
 
-  // <br/> tags are temporary until styling is added
   return (
-    <>
-      <h1>Sign In</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="username">Username: </label>
-        <input
-          id="username"
-          value={credentials.username}
-          name="username"
-          type="text"
-          onChange={handleChange}
-        />
-        <br />
-        <label htmlFor="password">Password: </label>
-        <input
-          id="password"
-          value={credentials.password}
-          name="password"
-          type="password"
-          onChange={handleChange}
-        />
-        <br />
-        <button type="submit">Sign In</button>
-        <br />
-        {/* <Link to={`/signup`}>Sign Up</Link> */}
-      </form>
-    </>
+    <SignFormContainer>
+      <Logo />
+      <SignForm onSubmit={handleSubmit}>
+        <InputContainer>
+          <SignInput1
+            id="username"
+            value={credentials.username}
+            name="username"
+            type="text"
+            onChange={handleChange}
+            placeholder="Username"
+          />
+        </InputContainer>
+        <InputContainer>
+          <SignInput2
+            id="password"
+            value={credentials.password}
+            name="password"
+            type="password"
+            onChange={handleChange}
+            placeholder="Password"
+          />
+        </InputContainer>
+        {loginFailure && (
+          <strong>
+            <p style={{ color: "red" }}>
+              Please enter the correct login information
+            </p>
+          </strong>
+        )}
+
+        <UMBButton onClick={handleSubmit}>Sign In</UMBButton>
+      </SignForm>
+    </SignFormContainer>
   );
 }

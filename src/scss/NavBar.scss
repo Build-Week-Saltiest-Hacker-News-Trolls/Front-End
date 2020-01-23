@@ -1,0 +1,14 @@
+@import "../theme/index.scss";
+
+#Navbar {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 25px;
+  @include flex(row, space-between, center);
+}
+
+.navbarContainer {
+  @include flex();
+  height: 70px;
+  box-shadow: 1px 1px 1px whitesmoke;
+}
